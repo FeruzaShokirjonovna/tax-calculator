@@ -15,8 +15,29 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('tax-calculator')
 
-sheet = SHEET.worksheet('sheet')
+class User:
+    def __init__(self, name, full_name, username):
+        self.name = name
+        self.full_name = full_name
+        self.username = username
 
-data = sheet.get_all_values()
 
-print (data)
+def update_google_sheet(name, full_name, login):
+    """
+    Get user name, full name
+    """
+    worksheet = spreadsheet.sheet1
+
+    # Append data to the sheet
+    worksheet.append_row([name, full_name, login])
+
+def main():
+    print("Welcome to the German Tax Return Calculator CLI")
+
+    # Get user input for personal details
+    name = input("Enter your name: ")
+    full_name = input("Enter your full name: ")
+    login = input("Enter your login: ")
+
+if __name__ == "__main__":
+    main()
