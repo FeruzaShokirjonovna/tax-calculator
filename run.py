@@ -60,6 +60,25 @@ def main():
             break
         else:
             print("Invalid login. Please ensure it includes numbers and uppercase letters.")
+     #Get user input for the tax year
+    try:
+        print("Enter the year you want to calculate Tax Refund")
+        print("For example: 2022")
+        year = int(input("Enter the tax year here: "))
+    except ValueError:
+        print("Invalid input. Please enter a valid year.")
+        return
+     #Get user input for tax class
+    try:
+        tax_class = int(input("Enter your tax class (1-6): "))
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
+        return
+
+    if tax_class not in range(1, 7):
+        print("Invalid tax class. Please enter a number between 1 and 6.")
+        return
+
 
 if __name__ == "__main__":
     main()
