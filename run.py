@@ -41,7 +41,7 @@ def update_google_sheet(name, full_name, login, yearly_income,elterngeld, kinder
         return
 
     # Append data to the sheet
-    worksheet.append_row([name, full_name, login])
+    worksheet.append_row([name, full_name, login, year, get_tax_class, yearly_income, Elterngeld, Kindergeld, pension_tax, health_insurance_tax, car_insurance_tax])
     print(f"Sign-up successful! Welcome, {name} {full_name}")
 
 def get_personal_details():
@@ -56,8 +56,7 @@ def get_personal_details():
         if is_valid_login(login):
             new_user = User(name, full_name, login)
             # Update Google Sheet if login is valid
-            update_google_sheet(name, full_name, login, yearly_income, elterngeld, kindergeld,
-                          pension_tax, health_insurance_tax, car_insurance_tax, tax_class)
+            update_google_sheet(name, full_name, login, get_tax_class)
             break
         else:
             print("Invalid login. Please ensure it includes numbers and uppercase letters.")
@@ -69,19 +68,20 @@ def get_personal_details():
     except ValueError:
         print("Invalid input. Please enter a valid year.")
         return
-    # Get user input for tax class
+    
+def get_tax_class():
     while True:
         try:
             tax_class = int(input("Enter your tax class (1-6): "))
             if 1 <= tax_class <= 6:
-                break  # Exit the loop if the entered tax class is valid
+                return tax_class
             else:
                 print("Invalid tax class. Please enter a number between 1 and 6.")
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
 
-def calculate_income_tax(yearly_income, elterngeld, kindergeld, pension_tax, health_insurance_tax, car_insurance_tax, tax_class):
+def calculate_income_tax():
     """
     Calculate yearly income
     """
@@ -106,19 +106,36 @@ def calculate_solidarity_surcharge(income_tax):
     """
     Calculate the solidarity surcharge out of total income
     """
-def calculate_total_tax(yearly_income, elterngeld, kindergeld, pension_tax, health_insurance_tax, car_insurance_tax, tax_class):
+
+def calculate_total_tax():
     """
     Calculate total tax
     """
+    income_tax = calculate_income_tax()
+    total_tax = calculate_income_tax
+    return total_tax
+
 
 def main():
     get_personal_details()
+    get_tax_class()
     try:
-        yearly_income = float(input("Enter your total income for {year}: "))
+        yearly_income = float(input("Enter your total income: "))
+        print("If you have children under years old, enter total Elterngeld and Kindergeld.")
+        print("If you do not get these, please enter 0 for each.)")
+        elterngeld = float(input("Enter your Elterngeld: "))
+        kindergeld = float(input("Enter your Kindergeld: "))
+        pension_tax = float(input("Enter taxes for pension: "))
+        health_insurance_tax = float(input("Enter taxes for health insurance: "))
+        print("If you pay for car insurance, enter. If not enter 0.")
+        car_insurance_tax = float(input("Enter taxes for car insurance: "))
+
     except ValueError:
         print("Invalid input. Please enter valid numbers.")
         return
 
+    #Calculate taxes
+    total_tax = calculate_total_tax()
 
 
 if __name__ == "__main__":
