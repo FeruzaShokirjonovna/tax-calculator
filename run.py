@@ -42,9 +42,7 @@ def update_google_sheet(name, full_name, login):
     # Append data to the sheet
     worksheet.append_row([name, full_name, login])
     print(f"Sign-up successful! Welcome, {name} {full_name}")
-
-
-def main():
+def get_personal_details():
     print("Welcome to the German Tax Return Calculator CLI")
     # Get user input for personal details
     name = input("Enter your name: ")
@@ -68,16 +66,39 @@ def main():
     except ValueError:
         print("Invalid input. Please enter a valid year.")
         return
-     #Get user input for tax class
-    try:
-        tax_class = int(input("Enter your tax class (1-6): "))
-    except ValueError:
-        print("Invalid input. Please enter a valid number.")
-        return
+    # Get user input for tax class
+    while True:
+        try:
+            tax_class = int(input("Enter your tax class (1-6): "))
+            if 1 <= tax_class <= 6:
+                break  # Exit the loop if the entered tax class is valid
+            else:
+                print("Invalid tax class. Please enter a number between 1 and 6.")
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
 
-    if tax_class not in range(1, 7):
-        print("Invalid tax class. Please enter a number between 1 and 6.")
-        return
+
+def calculate_income_tax(yearly_income, elterngeld, kindergeld, pension_tax, health_insurance_tax, car_insurance_tax, tax_class):
+    """
+    Calculate yearly income
+    """
+    #fictional tax rates
+    tax_rates = {
+        1: 0.1,
+        2: 0.15,
+        3: 0.25,
+        4: 0.35,
+        5: 0.45,
+        6: 0.5
+    }
+    #Calculate total income considering Elterngeld and Kindergeld
+    total_income = yearly_income + elterngeld + kindergeld
+
+
+
+def main():
+    get_personal_details()
+    
 
 
 if __name__ == "__main__":
