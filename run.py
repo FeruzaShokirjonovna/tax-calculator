@@ -28,7 +28,8 @@ def is_valid_login(login):
     return all(c.isalnum() or c.isupper() for c in login) and any(c.isupper() for c in login)
 
 
-def update_google_sheet(name, full_name, login):
+def update_google_sheet(name, full_name, login, yearly_income,elterngeld, kindergeld,
+                          pension_tax, health_insurance_tax, car_insurance_tax, tax_class):
     """
     Updates sheet adding details
     """
@@ -42,6 +43,7 @@ def update_google_sheet(name, full_name, login):
     # Append data to the sheet
     worksheet.append_row([name, full_name, login])
     print(f"Sign-up successful! Welcome, {name} {full_name}")
+
 def get_personal_details():
     print("Welcome to the German Tax Return Calculator CLI")
     # Get user input for personal details
@@ -54,7 +56,8 @@ def get_personal_details():
         if is_valid_login(login):
             new_user = User(name, full_name, login)
             # Update Google Sheet if login is valid
-            update_google_sheet(name, full_name, login)
+            update_google_sheet(name, full_name, login, yearly_income, elterngeld, kindergeld,
+                          pension_tax, health_insurance_tax, car_insurance_tax, tax_class)
             break
         else:
             print("Invalid login. Please ensure it includes numbers and uppercase letters.")
@@ -93,12 +96,29 @@ def calculate_income_tax(yearly_income, elterngeld, kindergeld, pension_tax, hea
     }
     #Calculate total income considering Elterngeld and Kindergeld
     total_income = yearly_income + elterngeld + kindergeld
+    #Deduct specific taxes like pension, health insurance, car insurance
+    total_income -= pension_tax + health_insurance_tax + car_insurance_tax
+    tax_rate = tax_rates.get(tax_class, 0.1)
+    tax = total_income * tax_rate
+    return tax
 
-
+def calculate_solidarity_surcharge(income_tax):
+    """
+    Calculate the solidarity surcharge out of total income
+    """
+def calculate_total_tax(yearly_income, elterngeld, kindergeld, pension_tax, health_insurance_tax, car_insurance_tax, tax_class):
+    """
+    Calculate total tax
+    """
 
 def main():
     get_personal_details()
-    
+    try:
+        yearly_income = float(input("Enter your total income for {year}: "))
+    except ValueError:
+        print("Invalid input. Please enter valid numbers.")
+        return
+
 
 
 if __name__ == "__main__":
