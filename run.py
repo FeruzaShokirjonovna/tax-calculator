@@ -52,7 +52,13 @@ def update_google_sheet(name, full_name, login, year, tax_class, yearly_income, 
     # Append data to the sheet
     worksheet.append_row([name, full_name, login, year, tax_class, yearly_income, elterngeld, kindergeld,
                           pension_tax, health_insurance_tax, car_insurance_tax])
-    
+    #Calculate and display refund
+    total_tax_calculated = calculate_total_tax(yearly_income, elterngeld, kindergeld,
+                                               pension_tax, health_insurance_tax, car_insurance_tax, tax_class)
+    overall_paid_tax = float(input("Enter the overall paid tax: "))  # User input for overall paid tax
+    refund = overall_paid_tax - total_tax_calculated
+    print(f"Your calculated refund is: {refund:.2f} Euros")
+
 
 
 def get_personal_details():
@@ -62,9 +68,17 @@ def get_personal_details():
     print("Welcome to the German Tax Return Calculator CLI")
     name = input("Enter your name: ")
     full_name = input("Enter your full name: ")
-    print("Enter your login, which must include numbers and uppercase letters.")
-    login = input("Enter your login: ")
-    print(f"Sign-up successful! Welcome, {name} {full_name}")
+    while True:
+        print("Enter your login, which must include numbers and uppercase letters.")
+        login = input("Enter your login here: ")
+
+        if is_valid_login(login):
+            new_user = User(name, full_name, login)
+            print(f"Sign-up successful! Welcome, {name} {full_name}")
+            break
+        else:
+            print("Invalid login. Please ensure it includes numbers and uppercase letters.")
+
     while True:
         try:
             # Get user input for the tax year
@@ -111,6 +125,7 @@ def get_income_details():
         health_insurance_tax = float(input("Enter taxes for health insurance: "))
         print("If you pay for car insurance, enter. If not enter 0.")
         car_insurance_tax = float(input("Enter taxes for car insurance: "))
+    
     except ValueError:
         print("Invalid input. Please enter valid numbers.")
         return 0, 0, 0, 0, 0, 0  # Return default values in case of an error
@@ -133,34 +148,30 @@ def calculate_income_tax(yearly_income, elterngeld, kindergeld, pension_tax, hea
     }
     # Calculate total income considering Elterngeld and Kindergeld
     total_income = yearly_income + elterngeld + kindergeld
-    # Deduct specific taxes like pension, health insurance, car insurance
+    # specific taxes like pension, health insurance, car insurance
     total_income -= pension_tax + health_insurance_tax + car_insurance_tax
     tax_rate = tax_rates.get(tax_class, 0.1)
     tax = total_income * tax_rate
     return tax
 
 
-def calculate_solidarity_surcharge(income_tax):
-    """
-    Calculate the solidarity surcharge out of total income
-    """
-
-
-def calculate_total_tax():
+def calculate_total_tax(yearly_income, elterngeld, kindergeld, pension_tax, health_insurance_tax, car_insurance_tax,
+                        tax_class):
     """
     Calculate total tax
     """
-    income_tax = calculate_income_tax()
-    total_tax = calculate_income_tax
-    return total_tax
+    income_tax = calculate_income_tax(yearly_income, elterngeld, kindergeld,
+                                      pension_tax, health_insurance_tax, car_insurance_tax, tax_class)
+    return income_tax
 
 
 def main():
-    name, full_name, login, year, tax_class, yearly_income, elterngeld, kindergeld, 
-        pension_tax, health_insurance_tax, car_insurance_tax = get_personal_details()
-    
+    name, full_name, login, year, tax_class, yearly_income, elterngeld, kindergeld, \
+    pension_tax, health_insurance_tax, car_insurance_tax = get_personal_details()
+
     update_google_sheet(name, full_name, login, year, tax_class, yearly_income, elterngeld, kindergeld,
                          pension_tax, health_insurance_tax, car_insurance_tax)
+
 
 
 if __name__ == "__main__":
