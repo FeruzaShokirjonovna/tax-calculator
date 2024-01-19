@@ -55,7 +55,7 @@ def update_google_sheet(name, full_name, login, year, tax_class, yearly_income, 
     #Calculate and display refund
     total_tax_calculated = calculate_total_tax(yearly_income, elterngeld, kindergeld,
                                                pension_tax, health_insurance_tax, car_insurance_tax, tax_class)
-    overall_paid_tax = float(input("Enter the overall paid tax: "))  # User input for overall paid tax
+    overall_paid_tax = float(input("Enter the overall paid tax: \n"))  # User input for overall paid tax
     refund = overall_paid_tax - total_tax_calculated
     print(f"Your calculated refund is: {refund:.2f} Euros")
 
@@ -66,25 +66,28 @@ def get_personal_details():
     Get user input for personal details
     """
     print("Welcome to the German Tax Return Calculator CLI")
-    name = input("Enter your name: ")
-    full_name = input("Enter your full name: ")
+    name = input("Enter your name: \n")
+    full_name = input("Enter your full name: \n")
+    year = 0  # Initialize 'year' variable
     while True:
         print("Enter your login, which must include numbers and uppercase letters.")
-        login = input("Enter your login here: ")
+        login = input("Enter your login here: \n")
 
         if is_valid_login(login):
-            new_user = User(name, full_name, login)
-            print(f"Sign-up successful! Welcome, {name} {full_name}")
+            
+            print(f"Sign-up successful! Welcome, {name} {full_name}\n")
             break
         else:
             print("Invalid login. Please ensure it includes numbers and uppercase letters.")
+    
+    
 
     while True:
         try:
             # Get user input for the tax year
             print("Enter the year you want to calculate Tax Refund")
             print("For example: 2022")
-            year = int(input("Enter the tax year here: "))
+            year = int(input("Enter the tax year here: \n"))
             break
         except ValueError:
             print("Invalid input. Please enter a valid year.")
@@ -101,7 +104,7 @@ def get_tax_class():
     """
     while True:
         try:
-            tax_class = int(input("Enter your tax class (1-6): "))
+            tax_class = int(input("Enter your tax class (1-6): \n"))
             if 1 <= tax_class <= 6:
                 return tax_class
             else:
@@ -116,15 +119,15 @@ def get_income_details():
     Income for the year, taxes he payed
     """
     try:
-        yearly_income = float(input("Enter your total income: "))
+        yearly_income = float(input("Enter your total income: \n"))
         print("If you have children under years old, enter total Elterngeld and Kindergeld.")
-        print("If you do not get these, please enter 0 for each.)")
-        elterngeld = float(input("Enter your Elterngeld: "))
-        kindergeld = float(input("Enter your Kindergeld: "))
-        pension_tax = float(input("Enter taxes for pension: "))
-        health_insurance_tax = float(input("Enter taxes for health insurance: "))
-        print("If you pay for car insurance, enter. If not enter 0.")
-        car_insurance_tax = float(input("Enter taxes for car insurance: "))
+        print("If you do not get these, please enter 0 for each.)\n")
+        elterngeld = float(input("Enter your Elterngeld: \n"))
+        kindergeld = float(input("Enter your Kindergeld: \n"))
+        pension_tax = float(input("Enter taxes for pension: \n"))
+        health_insurance_tax = float(input("Enter taxes for health insurance: \n"))
+        print("If you pay for car insurance, enter. If not enter 0."\n)
+        car_insurance_tax = float(input("Enter taxes for car insurance: \n"))
     
     except ValueError:
         print("Invalid input. Please enter valid numbers.")
