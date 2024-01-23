@@ -76,8 +76,9 @@ def get_personal_details():
     try:
         # Get user input for the tax year
         print("Enter the year you want to calculate Tax Refund. For example: 2022")
+        print("You can calculate tax refund for the year after 2020 year")
             
-        year = get_positive_float_input("Enter the year you want to calculate income tax here: \n")
+        year = year_validation("Enter the year you want to calculate income tax here: \n")
             
     except ValueError:
         print("Invalid input. Please enter a valid year.")
@@ -126,11 +127,30 @@ def get_income_details():
     return yearly_income, elterngeld, kindergeld, pension_tax, health_insurance_tax, car_insurance_tax
 
 def get_positive_float_input(prompt):
+    """
+    Check input if it is positive and numeric
+    If not display alert message
+    """
     while True:
         try:
             value = float(input(prompt))
-            if value <= 0:
+            if value < 0:
                 print("Please enter a positive value.")
+                continue
+            return value
+        except ValueError:
+            print("Please enter a valid numeric value.")
+
+def year_validation(prompt):
+    """
+    Check year input if it is not below 2020 and numeric
+    If not display alert message
+    """
+     while True:
+        try:
+            value = float(input(prompt))
+            if value < 2020:
+                print("You can calculate the tax refund after 2020 year")
                 continue
             return value
         except ValueError:
