@@ -1,32 +1,53 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Table of Content
 
-Welcome,
+* [**Project**](<#project>)
+    * [Site Users Goal](<#site-users-goal>)
+    * [User Stories](<#user-stories>)
+    * [Site Owners Goal](<#site-owners-goal>)
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+* [**User Experience (UX)**](<#user-experience-ux>)
+    * [Site Structure](<#site-structure>)
+    * [Flow chart](<#flow-chart>)
+    * [Data Model](<#data-model>)
+    * [Design Choices](<#design-choices>)
 
-## Reminders
+* [**Features**](<#features>)
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+* [**Features Left To Implement**](<#features-left-to-implement>)
 
-## Creating the Heroku app
+* [**Technologies Used**](<#technologies-used>)
+    * [Languages](<#languages>)
+    * [Frameworks, Librarys & Software](<#frameworks-libraries--software>)
+    * [Python Packages](<#python-packages>)
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+* [**Testing**](<#testing>)
+  * [Code Validation](<#code-validation>)
+  * [Additional Testing](<#additional-testing>)
+  * [Known Bugs](<#known-bugs>)
+* [Deployment](<#deployment>)
+* [Credits](<#credits>)
+* [Acknowledgements](<#acknowledgements>)
 
-1. `heroku/python`
-2. `heroku/nodejs`
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+# Technologies Used
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+## Languages
 
-Connect your GitHub repository and deploy as normal.
+* [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) - Provides the functionality for the application.
 
-## Constraints
+## Frameworks, Libraries & Software
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+* [Google Sheets](https://www.google.co.uk/sheets/about/) - Used to host the application data.
+* [Github](https://github.com/) - Used to host and edit the website.
+* [Gitpod](https://www.gitpod.io) - Used to push changes to the GitHub repository.
+* [Heroku](https://en.wikipedia.org/wiki/Heroku) - A cloud platform that the application is deployed to.
+* [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) - Used to test performance of site.
+* [Responsive Design Checker](https://www.responsivedesignchecker.com/) - Used for responsiveness check.
+* [Wave Web Accessibility Evaluation Tool](https://wave.webaim.org/) - Used to validate the sites accessibility.
 
----
+## Python Packages
+* [GSpread](https://pypi.org/project/gspread/) - A Python API for Google Sheets that makes it possible to transfer data between the application and the Google Sheet.
 
-Happy coding!
+[Back to top](<#table-of-content>)
+[Back to top](<#table-of-content>)
+[Back to top](<#table-of-content>)

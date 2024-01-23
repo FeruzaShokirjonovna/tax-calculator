@@ -14,11 +14,10 @@ SHEET = GSPREAD_CLIENT.open('tax-calculator')
 
 
 class User:
-    def __init__(self, name, full_name, login, year, tax_class, yearly_income, elterngeld, kindergeld,
+    def __init__(self, name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld,
                  pension_tax, health_insurance_tax, car_insurance_tax):
         self.name = name
         self.full_name = full_name
-        self.login = login
         self.year = year
         self.tax_class = tax_class
         self.yearly_income = yearly_income
@@ -29,40 +28,28 @@ class User:
         self.car_insurance_tax = car_insurance_tax
 
 
-def is_valid_login(login):
-    """
-    Validation for login
-    Checks that user entered login with letters, numbers and uppercase
-    """
-    return all(c.isalnum() or c.isupper() for c in login) and any(c.isupper() for c in login)
 
-
-def update_google_sheet(name, full_name, login, year, tax_class, yearly_income, elterngeld, kindergeld,
+def update_google_sheet(name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld,
                          pension_tax, health_insurance_tax, car_insurance_tax):
     """
     Updates sheet adding details
     """
     worksheet = SHEET.get_worksheet(0)  #
     # Check if login already exists in the sheet
-    login_column = worksheet.col_values(3)  # Assuming login is in the third column
-    if login in login_column:
-        print("Login already exists. Please choose a different login.")
-        return
-
+    
     # Append data to the sheet
-    worksheet.append_row([name, full_name, login, year, tax_class, yearly_income, elterngeld, kindergeld,
+    worksheet.append_row([name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld,
                           pension_tax, health_insurance_tax, car_insurance_tax])
     #Calculate and display refund
     total_tax_calculated = calculate_total_tax(yearly_income, elterngeld, kindergeld,
                                                pension_tax, health_insurance_tax, car_insurance_tax, tax_class)
-    overall_paid_tax = float(input("Enter the overall paid tax: \n"))  # User input for overall paid tax
+    overall_paid_tax = float(input("Enter the overall tax you paid in this year: \n"))  # User input for overall paid tax
     refund = overall_paid_tax - total_tax_calculated
     
     print("\nUser Details:")
     print(f"Name: {name}")
     print(f"Full Name: {full_name}")
-    print(f"Login: {login}")
-    print(f"Tax Year: {year}")
+    print(f"Year: {year}")
     print(f"Tax Class: {tax_class}")
     print("\nUser Entries:")
     print(f"Yearly Income: {yearly_income}")
@@ -85,17 +72,6 @@ def get_personal_details():
     name = input("Enter your name: \n")
     full_name = input("Enter your full name: \n")
     year = 0  # Initialize 'year' variable
-    while True:
-        print("Enter your login, which must include numbers and uppercase letters.")
-        login = input("Enter your login here: \n")
-
-        if is_valid_login(login):
-            
-            print(f"Sign-up successful! Welcome, {name} {full_name}")
-            break
-        else:
-            print("Invalid login. Please ensure it includes numbers and uppercase letters.")
-    
     
 
     while True:
@@ -111,7 +87,7 @@ def get_personal_details():
     tax_class = get_tax_class()
     income_details = get_income_details()  # Call the function to gather income details
 
-    return name, full_name, login, year, tax_class, *income_details  # Unpack income details
+    return name, full_name, year, tax_class, *income_details  # Unpack income details
 
 
 def get_tax_class():
@@ -185,13 +161,11 @@ def calculate_total_tax(yearly_income, elterngeld, kindergeld, pension_tax, heal
 
 
 def main():
-    name, full_name, login, year, tax_class, yearly_income, elterngeld, kindergeld, \
+    name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld, \
     pension_tax, health_insurance_tax, car_insurance_tax = get_personal_details()
 
-    update_google_sheet(name, full_name, login, year, tax_class, yearly_income, elterngeld, kindergeld,
+    update_google_sheet(name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld,
                          pension_tax, health_insurance_tax, car_insurance_tax)
-
-
 
 if __name__ == "__main__":
     main()
