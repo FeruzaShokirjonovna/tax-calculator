@@ -145,7 +145,7 @@ def year_validation(prompt):
     Check year input if it is not below 2020 and numeric
     If not display alert message
     """
-     while True:
+    while True:
         try:
             value = float(input(prompt))
             if value < 2020:
@@ -194,6 +194,13 @@ def main():
     print("Answer our easy-to-understand question-answer process, or have your tax done by an independent tax advisor")
     print("This digital tool is designed to assist individuals in estimating potential tax refunds quickly and accurately avoiding complicated tax jargon")
     print("Your data is always transmitted in encrypted form to our servers and via ELSTER to the tax office.")
+
+    print("Choose an option:")
+    print("1. Calculate Tax Refund")
+    print("2. Get Help from an independent tax advisor, who will prepare and submit your tax return for you")
+
+    choice = input("Enter your choice (1 or 2): ")
+
     name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld, \
     pension_tax, health_insurance_tax, car_insurance_tax = get_personal_details()
 
