@@ -68,7 +68,6 @@ def get_personal_details():
     """
     Get user input for personal details
     """
-    print("Welcome to the German Tax Return Calculator CLI")
     name = input("Enter your name: \n")
     full_name = input("Enter your full name: \n")
     year = 0  # Initialize 'year' variable
@@ -191,6 +190,10 @@ def calculate_total_tax(yearly_income, elterngeld, kindergeld, pension_tax, heal
 
 
 def main():
+    print("Welcome to the German Tax Return Calculator")
+    print("Answer our easy-to-understand question-answer process, or have your tax done by an independent tax advisor")
+    print("This digital tool is designed to assist individuals in estimating potential tax refunds quickly and accurately avoiding complicated tax jargon")
+    print("Your data is always transmitted in encrypted form to our servers and via ELSTER to the tax office.")
     name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld, \
     pension_tax, health_insurance_tax, car_insurance_tax = get_personal_details()
 
