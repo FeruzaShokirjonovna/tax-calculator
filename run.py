@@ -73,16 +73,14 @@ def get_personal_details():
     full_name = input("Enter your full name: \n")
     year = 0  # Initialize 'year' variable
     
-
-    while True:
-        try:
-            # Get user input for the tax year
-            print("Enter the year you want to calculate Tax Refund. For example: 2022")
+    try:
+        # Get user input for the tax year
+        print("Enter the year you want to calculate Tax Refund. For example: 2022")
             
-            year = int(input("Enter the year you want to calculate income tax here: \n"))
-            break
-        except ValueError:
-            print("Invalid input. Please enter a valid year.")
+        year = get_positive_float_input("Enter the year you want to calculate income tax here: \n")
+            
+    except ValueError:
+        print("Invalid input. Please enter a valid year.")
 
     tax_class = get_tax_class()
     income_details = get_income_details()  # Call the function to gather income details
@@ -111,21 +109,33 @@ def get_income_details():
     Income for the year, taxes he payed
     """
     try:
-        yearly_income = float(input("Enter your total income: \n"))
+        yearly_income = get_positive_float_input("Enter your total income: \n")
         print("If you have children under years old, enter total Elterngeld and Kindergeld.")
         print("If you do not get these, please enter 0 for each.)")
-        elterngeld = float(input("Enter your Elterngeld: \n"))
-        kindergeld = float(input("Enter your Kindergeld: \n"))
-        pension_tax = float(input("Enter taxes for pension: \n"))
-        health_insurance_tax = float(input("Enter taxes for health insurance: \n"))
+        elterngeld = get_positive_float_input("Enter your Elterngeld: \n")
+        kindergeld = get_positive_float_input("Enter your Kindergeld: \n")
+        pension_tax = get_positive_float_input("Enter taxes for pension: \n")
+        health_insurance_tax = get_positive_float_input("Enter taxes for health insurance: \n")
         print("If you pay for car insurance, enter. If not enter 0.")
-        car_insurance_tax = float(input("Enter taxes for car insurance: \n"))
+        car_insurance_tax = get_positive_float_input("Enter taxes for car insurance: \n")
     
     except ValueError:
         print("Invalid input. Please enter valid numbers.")
         return 0, 0, 0, 0, 0, 0  # Return default values in case of an error
 
     return yearly_income, elterngeld, kindergeld, pension_tax, health_insurance_tax, car_insurance_tax
+
+def get_positive_float_input(prompt):
+    while True:
+        try:
+            value = float(input(prompt))
+            if value <= 0:
+                print("Please enter a positive value.")
+                continue
+            return value
+        except ValueError:
+            print("Please enter a valid numeric value.")
+
 
 def calculate_income_tax(yearly_income, elterngeld, kindergeld, pension_tax, health_insurance_tax, car_insurance_tax,
                          tax_class):
