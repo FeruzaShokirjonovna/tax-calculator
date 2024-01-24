@@ -116,7 +116,7 @@ def get_tax_class():
             print("4.Married individuals where both partners earn income.")
             print("5.Married individuals whose spouse is in Tax Class 3.")
             print("6.Applies when an individual has more than one job simultaneously.")
-            tax_class = int(input("Enter your tax class (1-6): \n"))
+            tax_class = int(input("\nEnter your tax class (1-6): \n"))
             if 1 <= tax_class <= 6:
                 return tax_class
             else:
@@ -247,9 +247,9 @@ def get_tax_id():
             print("Invalid tax ID. Please enter a numeric tax ID with a length of 11 digits.")
 
 def main():
-    print("Welcome to the German Tax Return Calculator")
+    print("Welcome to the Wunder eTax Return ")
     print("Answer our easy-to-understand question-answer process, or have your tax done by an independent tax advisor")
-    print("This digital tool is designed to assist individuals in estimating potential tax refunds quickly and accurately avoiding complicated tax jargon")
+    print("We are willing to assist you in estimating potential tax refunds quickly and accurately avoiding complicated tax jargon")
     print("Your data is always transmitted in encrypted form to our servers and via ELSTER to the tax office.")
 
     print("\nChoose an option:")
