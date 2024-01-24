@@ -26,6 +26,7 @@ class User:
         self.pension_tax = pension_tax
         self.health_insurance_tax = health_insurance_tax
         self.car_insurance_tax = car_insurance_tax
+        self.tax_id = tax_id
 
 
 def update_google_sheet(user):
@@ -36,7 +37,7 @@ def update_google_sheet(user):
     
     # Append data to the sheet
     worksheet.append_row([user.name, user.full_name, user.year, user.tax_class, user.yearly_income, user.elterngeld,
-                          user.kindergeld, user.pension_tax, user.health_insurance_tax, user.car_insurance_tax])
+                          user.kindergeld, user.pension_tax, user.health_insurance_tax, user.car_insurance_tax, user.tax_id])
 
     # Calculate and display refund
     total_tax_calculated = calculate_total_tax(user.yearly_income, user.elterngeld, user.kindergeld,
@@ -54,7 +55,7 @@ def update_google_sheet(user):
     print(f"Full Name: {user.full_name}")
     print(f"Year: {user.year}")
     print(f"Tax Class: {user.tax_class}")
-    print(f"Tax ID: {tax_id}")
+    print(f"Tax ID: {user.tax_id}")
     print("\nUser Entries:")
     print(f"Yearly Income: {user.yearly_income}")
     print(f"Elterngeld: {user.elterngeld}")
@@ -233,8 +234,6 @@ def get_tax_id():
             return tax_id
         else:
             print("Invalid tax ID. Please enter a numeric tax ID with a length of 10 digits.")
-
-
 
 def main():
     print("Welcome to the German Tax Return Calculator")
