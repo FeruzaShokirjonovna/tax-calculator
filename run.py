@@ -43,6 +43,10 @@ def update_google_sheet(user):
                                                user.pension_tax, user.health_insurance_tax, user.car_insurance_tax,
                                                user.tax_class)
     overall_paid_tax = get_positive_float_input(f"Enter the overall tax you paid in this year: \n")  # User input for overall paid tax
+    
+    print("\nThe tax identification number , abbreviated tax ID, helps tax offices identify and manage taxpayers.")# User input for tax ID
+    tax_id = get_tax_id()
+    
     refund = overall_paid_tax - total_tax_calculated
 
     print("\nUser Details:")
@@ -50,6 +54,7 @@ def update_google_sheet(user):
     print(f"Full Name: {user.full_name}")
     print(f"Year: {user.year}")
     print(f"Tax Class: {user.tax_class}")
+    print(f"Tax ID: {tax_id}")
     print("\nUser Entries:")
     print(f"Yearly Income: {user.yearly_income}")
     print(f"Elterngeld: {user.elterngeld}")
@@ -81,7 +86,7 @@ def get_personal_details():
 
         try:
             # Get user input for the tax year
-            print("Enter the year you want to calculate Tax Refund. For example: 2022")
+            print("Enter the year you want to calculate Tax Refund.")
             print("You can calculate tax refund for the year between 2020-2023 years")
 
             year = year_validation("\nEnter the year you want to calculate income tax here: \n")
@@ -218,6 +223,19 @@ def calculate_tax_refund(overall_paid_tax, tax_class, yearly_income, elterngeld,
     print(f"Overall Paid Tax: {overall_paid_tax:.2f} Euros")
     print(f"Refund: {refund:.2f} Euros")
 
+def get_tax_id():
+    """
+    Get user input for tax ID with validation
+    """
+    while True:
+        tax_id = input("Enter your tax ID: \n")
+        if tax_id.isnumeric() and len(tax_id) == 10:  # Assuming a tax ID is a numeric value with a specific length
+            return tax_id
+        else:
+            print("Invalid tax ID. Please enter a numeric tax ID with a length of 10 digits.")
+
+
+
 def main():
     print("Welcome to the German Tax Return Calculator")
     print("Answer our easy-to-understand question-answer process, or have your tax done by an independent tax advisor")
@@ -238,6 +256,8 @@ def main():
     elif choice == "2":
         user = get_personal_details()
         update_google_sheet(User(*user))  # send data to google sheets for admin
+        print("\nYour data is successfully sent to our server!")
+        
     else:
         print("Invalid choice. Please enter 1 or 2.")
 
