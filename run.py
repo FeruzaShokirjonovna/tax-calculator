@@ -108,8 +108,9 @@ def get_income_details():
     Get user input for income types
     Income for the year, taxes he payed
     """
+    
     try:
-        yearly_income = get_positive_float_input("Enter your total income: \n")
+        yearly_income = get_positive_float_input("Enter your yearly income: \n")
         print("If you have children under years old, enter total Elterngeld and Kindergeld.")
         print("If you do not get these, please enter 0 for each.)")
         elterngeld = get_positive_float_input("Enter your Elterngeld: \n")
@@ -188,6 +189,25 @@ def calculate_total_tax(yearly_income, elterngeld, kindergeld, pension_tax, heal
                                       pension_tax, health_insurance_tax, car_insurance_tax, tax_class)
     return income_tax
 
+def calculate_tax_refund():
+    tax_class = get_tax_class()
+    income_details = get_income_details()
+    total_tax_calculated = calculate_total_tax(*income_details, tax_class)  
+    overall_paid_tax = get_positive_float_input("Enter the overall tax you paid in this year: \n")
+    refund = overall_paid_tax - total_tax_calculated
+
+    print(f"Tax Class: {tax_class}")
+    print("\nUser Entries:")
+    print(f"Yearly Income: {income_details[0]}")
+    print(f"Elterngeld: {income_details[1]}")
+    print(f"Kindergeld: {income_details[2]}")
+    print(f"Pension Tax: {income_details[3]}")
+    print(f"Health Insurance Tax: {income_details[4]}")
+    print(f"Car Insurance Tax: {income_details[5]}")
+    print("\nCalculated Refund:")
+    print(f"Total Tax Calculated: {total_tax_calculated:.2f} Euros")
+    print(f"Overall Paid Tax: {overall_paid_tax:.2f} Euros")
+    print(f"Refund: {refund:.2f} Euros")
 
 def main():
     print("Welcome to the German Tax Return Calculator")
@@ -201,9 +221,7 @@ def main():
 
     choice = input("Enter your choice (1 or 2): ")
     if choice == "1":
-        name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld, \
-        pension_tax, health_insurance_tax, car_insurance_tax = get_personal_details()
-
+        calculate_tax_refund()
     elif choice == "2":
         name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld, \
         pension_tax, health_insurance_tax, car_insurance_tax = get_personal_details()
