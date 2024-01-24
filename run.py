@@ -28,41 +28,39 @@ class User:
         self.car_insurance_tax = car_insurance_tax
 
 
-
-def update_google_sheet(name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld,
-                         pension_tax, health_insurance_tax, car_insurance_tax):
+def update_google_sheet(user):
     """
     Updates sheet adding details
     """
-    worksheet = SHEET.get_worksheet(0)  #
-    # Check if login already exists in the sheet
+    worksheet = SHEET.get_worksheet(0)
     
     # Append data to the sheet
-    worksheet.append_row([name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld,
-                          pension_tax, health_insurance_tax, car_insurance_tax])
-    #Calculate and display refund
-    total_tax_calculated = calculate_total_tax(yearly_income, elterngeld, kindergeld,
-                                               pension_tax, health_insurance_tax, car_insurance_tax, tax_class)
-    
+    worksheet.append_row([user.name, user.full_name, user.year, user.tax_class, user.yearly_income, user.elterngeld,
+                          user.kindergeld, user.pension_tax, user.health_insurance_tax, user.car_insurance_tax])
+
+    # Calculate and display refund
+    total_tax_calculated = calculate_total_tax(user.yearly_income, user.elterngeld, user.kindergeld,
+                                               user.pension_tax, user.health_insurance_tax, user.car_insurance_tax,
+                                               user.tax_class)
+    overall_paid_tax = get_positive_float_input(f"Enter the overall tax you paid in this year: \n")  # User input for overall paid tax
     refund = overall_paid_tax - total_tax_calculated
-    
+
     print("\nUser Details:")
-    print(f"Name: {name}")
-    print(f"Full Name: {full_name}")
-    print(f"Year: {year}")
-    print(f"Tax Class: {tax_class}")
+    print(f"Name: {user.name}")
+    print(f"Full Name: {user.full_name}")
+    print(f"Year: {user.year}")
+    print(f"Tax Class: {user.tax_class}")
     print("\nUser Entries:")
-    print(f"Yearly Income: {yearly_income}")
-    print(f"Elterngeld: {elterngeld}")
-    print(f"Kindergeld: {kindergeld}")
-    print(f"Pension Tax: {pension_tax}")
-    print(f"Health Insurance Tax: {health_insurance_tax}")
-    print(f"Car Insurance Tax: {car_insurance_tax}")
+    print(f"Yearly Income: {user.yearly_income}")
+    print(f"Elterngeld: {user.elterngeld}")
+    print(f"Kindergeld: {user.kindergeld}")
+    print(f"Pension Tax: {user.pension_tax}")
+    print(f"Health Insurance Tax: {user.health_insurance_tax}")
+    print(f"Car Insurance Tax: {user.car_insurance_tax}")
     print("\nCalculated Refund:")
     print(f"Total Tax Calculated: {total_tax_calculated:.2f} Euros")
     print(f"Overall Paid Tax: {overall_paid_tax:.2f} Euros")
     print(f"Refund: {refund:.2f} Euros")
-
 
 def get_personal_details():
     """
@@ -77,7 +75,7 @@ def get_personal_details():
         print("Enter the year you want to calculate Tax Refund. For example: 2022")
         print("You can calculate tax refund for the year between 2020-2023 years")
             
-        year = year_validation("Enter the year you want to calculate income tax here: \n")
+        year = year_validation("\nEnter the year you want to calculate income tax here: \n")
             
     except ValueError:
         print("Invalid input. Please enter a valid year.")
@@ -107,8 +105,7 @@ def get_income_details():
     """
     Get user input for income types
     Income for the year, taxes he payed
-    """
-    
+    """   
     try:
         yearly_income = get_positive_float_input("Enter your yearly income: \n")
         print("If you have children under years old, enter total Elterngeld and Kindergeld.")
@@ -119,7 +116,7 @@ def get_income_details():
         health_insurance_tax = get_positive_float_input("Enter taxes for health insurance: \n")
         print("If you pay for car insurance, enter. If not enter 0.")
         car_insurance_tax = get_positive_float_input("Enter taxes for car insurance: \n")
-        overall_paid_tax = float(input("Enter the overall tax you paid in {year} year: \n"))  # User input for overall paid tax
+        
     except ValueError:
         print("Invalid input. Please enter valid numbers.")
         return 0, 0, 0, 0, 0, 0  # Return default values in case of an error
@@ -189,21 +186,24 @@ def calculate_total_tax(yearly_income, elterngeld, kindergeld, pension_tax, heal
                                       pension_tax, health_insurance_tax, car_insurance_tax, tax_class)
     return income_tax
 
-def calculate_tax_refund():
-    tax_class = get_tax_class()
-    income_details = get_income_details()
+def calculate_tax_refund(overall_paid_tax, tax_class, yearly_income, elterngeld, kindergeld,
+                         pension_tax, health_insurance_tax, car_insurance_tax):
+    """
+    Calculate tax refund, getting income details
+    Display provided data and calculated data
+    """
+    income_details = (yearly_income, elterngeld, kindergeld, pension_tax, health_insurance_tax, car_insurance_tax)
     total_tax_calculated = calculate_total_tax(*income_details, tax_class)  
-    overall_paid_tax = get_positive_float_input("Enter the overall tax you paid in this year: \n")
     refund = overall_paid_tax - total_tax_calculated
 
     print(f"Tax Class: {tax_class}")
     print("\nUser Entries:")
-    print(f"Yearly Income: {income_details[0]}")
-    print(f"Elterngeld: {income_details[1]}")
-    print(f"Kindergeld: {income_details[2]}")
-    print(f"Pension Tax: {income_details[3]}")
-    print(f"Health Insurance Tax: {income_details[4]}")
-    print(f"Car Insurance Tax: {income_details[5]}")
+    print(f"Yearly Income: {yearly_income}")
+    print(f"Elterngeld: {elterngeld}")
+    print(f"Kindergeld: {kindergeld}")
+    print(f"Pension Tax: {pension_tax}")
+    print(f"Health Insurance Tax: {health_insurance_tax}")
+    print(f"Car Insurance Tax: {car_insurance_tax}")
     print("\nCalculated Refund:")
     print(f"Total Tax Calculated: {total_tax_calculated:.2f} Euros")
     print(f"Overall Paid Tax: {overall_paid_tax:.2f} Euros")
@@ -215,24 +215,22 @@ def main():
     print("This digital tool is designed to assist individuals in estimating potential tax refunds quickly and accurately avoiding complicated tax jargon")
     print("Your data is always transmitted in encrypted form to our servers and via ELSTER to the tax office.")
 
-    print("Choose an option:")
+    print("\nChoose an option:")
     print("1. Calculate Tax Refund")
     print("2. Get Help from an independent tax advisor, who will prepare and submit your tax return for you")
 
-    choice = input("Enter your choice (1 or 2): ")
+    choice = input("\nEnter your choice (1 or 2): ")
     if choice == "1":
-        calculate_tax_refund()
+        overall_paid_tax = get_positive_float_input(f"Enter the overall tax you paid in this year: \n")  # User input for overall paid tax
+        tax_class = get_tax_class()
+        yearly_income, elterngeld, kindergeld, pension_tax, health_insurance_tax, car_insurance_tax = get_income_details()
+        calculate_tax_refund(overall_paid_tax, tax_class, yearly_income, elterngeld, kindergeld,
+                             pension_tax, health_insurance_tax, car_insurance_tax)
     elif choice == "2":
-        name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld, \
-        pension_tax, health_insurance_tax, car_insurance_tax = get_personal_details()
-
-        update_google_sheet(name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld,
-                         pension_tax, health_insurance_tax, car_insurance_tax)
+        user = get_personal_details()
+        update_google_sheet(User(*user))  # send data to google sheets for admin
     else:
         print("Invalid choice. Please enter 1 or 2.")
-    
-    update_google_sheet(name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld,
-                         pension_tax, health_insurance_tax, car_insurance_tax)
 
 if __name__ == "__main__":
     main()
