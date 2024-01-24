@@ -75,7 +75,7 @@ def get_personal_details():
     try:
         # Get user input for the tax year
         print("Enter the year you want to calculate Tax Refund. For example: 2022")
-        print("You can calculate tax refund for the year after 2020 year")
+        print("You can calculate tax refund for the year between 2020-2023 years")
             
         year = year_validation("Enter the year you want to calculate income tax here: \n")
             
@@ -148,8 +148,8 @@ def year_validation(prompt):
     while True:
         try:
             value = float(input(prompt))
-            if value < 2020:
-                print("You can calculate the tax refund after 2020 year")
+            if 2020 <= value <= 2023 :
+                print("The year you provided is {year}.Please enter between 2020-2023 yy. ")
                 continue
             return value
         except ValueError:
@@ -200,10 +200,19 @@ def main():
     print("2. Get Help from an independent tax advisor, who will prepare and submit your tax return for you")
 
     choice = input("Enter your choice (1 or 2): ")
-
-    name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld, \
+    if choice == "1":
+        name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld, \
     pension_tax, health_insurance_tax, car_insurance_tax = get_personal_details()
 
+    elif choice == "2":
+        name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld, \
+        pension_tax, health_insurance_tax, car_insurance_tax = get_personal_details()
+
+        update_google_sheet(name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld,
+                         pension_tax, health_insurance_tax, car_insurance_tax)
+    else:
+        print("Invalid choice. Please enter 1 or 2.")
+    
     update_google_sheet(name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld,
                          pension_tax, health_insurance_tax, car_insurance_tax)
 
