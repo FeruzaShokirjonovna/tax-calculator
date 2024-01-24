@@ -123,8 +123,10 @@ def get_income_details():
     """   
     try:
         yearly_income = get_positive_float_input("Enter your yearly income: \n")
-        print("If you have children under years old, enter total Elterngeld and Kindergeld.")
-        print("If you do not get these, please enter 0 for each.)")
+        print("If you have children, enter total Elterngeld and Kindergeld.")
+        print("\nElterngeld is a financial benefit provided by the German government to support parents during the time they take off work to care for their newborn or adopted child. ")
+        print("Kindergeld is intended to support families in covering the basic needs of their children, such as food, clothing, and education.")
+        print("\nIf you do not get these, please enter 0 for each.)")
         elterngeld = get_positive_float_input("Enter your Elterngeld: \n")
         kindergeld = get_positive_float_input("Enter your Kindergeld: \n")
         pension_tax = get_positive_float_input("Enter taxes for pension: \n")
@@ -230,10 +232,10 @@ def get_tax_id():
     """
     while True:
         tax_id = input("Enter your tax ID: \n")
-        if tax_id.isnumeric() and len(tax_id) == 10:  # Assuming a tax ID is a numeric value with a specific length
+        if tax_id.isnumeric() and len(tax_id) == 11:  # Assuming a tax ID is a numeric value with a specific length
             return tax_id
         else:
-            print("Invalid tax ID. Please enter a numeric tax ID with a length of 10 digits.")
+            print("Invalid tax ID. Please enter a numeric tax ID with a length of 11 digits.")
 
 def main():
     print("Welcome to the German Tax Return Calculator")
