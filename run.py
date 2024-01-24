@@ -107,6 +107,15 @@ def get_tax_class():
     """
     while True:
         try:
+            print("\nIn the German income tax system, there are six tax classes, known as 'Steuerklasse'. ")
+            print("Each tax class is associated with specific circumstances and may affect the overall tax liability.")
+            print("Here is a brief overview:")
+            print("\n1.Single individuals and those who are divorced or widowed.")
+            print("2.Single parents (personally raising at least one child and eligible for child benefits(Kindergeld)).")
+            print("3.Married individuals whose spouse is in Tax Class 5.")
+            print("4.Married individuals where both partners earn income.")
+            print("5.Married individuals whose spouse is in Tax Class 3.")
+            print("6.Applies when an individual has more than one job simultaneously.")
             tax_class = int(input("Enter your tax class (1-6): \n"))
             if 1 <= tax_class <= 6:
                 return tax_class
