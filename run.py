@@ -66,24 +66,33 @@ def get_personal_details():
     """
     Get user input for personal details
     """
-    name = input("Enter your name: \n")
-    full_name = input("Enter your full name: \n")
-    year = 0  # Initialize 'year' variable
-    
-    try:
-        # Get user input for the tax year
-        print("Enter the year you want to calculate Tax Refund. For example: 2022")
-        print("You can calculate tax refund for the year between 2020-2023 years")
-            
-        year = year_validation("\nEnter the year you want to calculate income tax here: \n")
-            
-    except ValueError:
-        print("Invalid input. Please enter a valid year.")
+    while True:
+        name = input("Enter your name: \n")
+        if not name.isalpha():
+            print("Invalid input. Please enter a valid name with only alphabetic characters.")
+            continue
 
-    tax_class = get_tax_class()
-    income_details = get_income_details()  # Call the function to gather income details
+        full_name = input("Enter your full name: \n")
+        if not full_name.replace(" ", "").isalpha():
+            print("Invalid input. Please enter a valid full name with only alphabetic characters.")
+            continue
 
-    return name, full_name, year, tax_class, *income_details  # Unpack income details
+        year = 0  # Initialize 'year' variable
+
+        try:
+            # Get user input for the tax year
+            print("Enter the year you want to calculate Tax Refund. For example: 2022")
+            print("You can calculate tax refund for the year between 2020-2023 years")
+
+            year = year_validation("\nEnter the year you want to calculate income tax here: \n")
+
+        except ValueError:
+            print("Invalid input. Please enter a valid year.")
+
+        tax_class = get_tax_class()
+        income_details = get_income_details()  # Call the function to gather income details
+
+        return name, full_name, year, tax_class, *income_details  # Unpack income details
 
 
 def get_tax_class():
