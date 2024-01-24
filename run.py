@@ -43,7 +43,7 @@ def update_google_sheet(name, full_name, year, tax_class, yearly_income, elterng
     #Calculate and display refund
     total_tax_calculated = calculate_total_tax(yearly_income, elterngeld, kindergeld,
                                                pension_tax, health_insurance_tax, car_insurance_tax, tax_class)
-    overall_paid_tax = float(input("Enter the overall tax you paid in this year: \n"))  # User input for overall paid tax
+    
     refund = overall_paid_tax - total_tax_calculated
     
     print("\nUser Details:")
@@ -118,7 +118,7 @@ def get_income_details():
         health_insurance_tax = get_positive_float_input("Enter taxes for health insurance: \n")
         print("If you pay for car insurance, enter. If not enter 0.")
         car_insurance_tax = get_positive_float_input("Enter taxes for car insurance: \n")
-    
+        overall_paid_tax = float(input("Enter the overall tax you paid in {year} year: \n"))  # User input for overall paid tax
     except ValueError:
         print("Invalid input. Please enter valid numbers.")
         return 0, 0, 0, 0, 0, 0  # Return default values in case of an error
@@ -142,18 +142,18 @@ def get_positive_float_input(prompt):
 
 def year_validation(prompt):
     """
-    Check year input if it is not below 2020 and numeric
-    If not display alert message
+    Check year input if it is not below 2020 and not above 2023 and numeric
+    If not display an alert message
     """
     while True:
         try:
-            value = float(input(prompt))
-            if 2020 <= value <= 2023 :
-                print("The year you provided is {year}.Please enter between 2020-2023 yy. ")
-                continue
-            return value
+            value = int(input(prompt))
+            if 2020 <= value <= 2023:
+                return value
+            else:
+                print(f"The year you provided is {value}. Please enter a year between 2020 and 2023.")
         except ValueError:
-            print("Please enter a valid numeric value.")
+            print("Invalid input. Please enter a valid numeric value.")
 
 
 def calculate_income_tax(yearly_income, elterngeld, kindergeld, pension_tax, health_insurance_tax, car_insurance_tax,
@@ -202,7 +202,7 @@ def main():
     choice = input("Enter your choice (1 or 2): ")
     if choice == "1":
         name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld, \
-    pension_tax, health_insurance_tax, car_insurance_tax = get_personal_details()
+        pension_tax, health_insurance_tax, car_insurance_tax = get_personal_details()
 
     elif choice == "2":
         name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld, \
