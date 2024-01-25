@@ -1,3 +1,5 @@
+Wunder eTax is a tax refund calculator app serves as a convenient and secure solution for individuals seeking a hassle-free way to estimate their tax refunds without the burden of intricate tax language. The combination of user-friendly design, straightforward questions, and robust security measures ensures that users can confidently and easily navigate the tax estimation process.
+
 # Table of Content
 
 * [**Project**](<#project>)

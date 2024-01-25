@@ -14,11 +14,10 @@ SHEET = GSPREAD_CLIENT.open('tax-calculator')
 
 
 class User:
-    def __init__(self, name, full_name, year, tax_class, yearly_income, elterngeld, kindergeld,
-                 pension_tax, health_insurance_tax, car_insurance_tax):
+    def __init__(self, name, full_name, tax_class, yearly_income, elterngeld, kindergeld,
+                 pension_tax, health_insurance_tax, car_insurance_tax, tax_id, year):
         self.name = name
         self.full_name = full_name
-        self.year = year
         self.tax_class = tax_class
         self.yearly_income = yearly_income
         self.elterngeld = elterngeld
@@ -27,7 +26,7 @@ class User:
         self.health_insurance_tax = health_insurance_tax
         self.car_insurance_tax = car_insurance_tax
         self.tax_id = tax_id
-
+        self.year = year
 
 def update_google_sheet(user):
     """
@@ -36,26 +35,22 @@ def update_google_sheet(user):
     worksheet = SHEET.get_worksheet(0)
     
     # Append data to the sheet
-    worksheet.append_row([user.name, user.full_name, user.year, user.tax_class, user.yearly_income, user.elterngeld,
-                          user.kindergeld, user.pension_tax, user.health_insurance_tax, user.car_insurance_tax, user.tax_id])
+    worksheet.append_row([user.name, user.full_name, user.tax_class, user.yearly_income, user.elterngeld,
+                          user.kindergeld, user.pension_tax, user.health_insurance_tax, user.car_insurance_tax, user.tax_id, user.year])
 
     # Calculate and display refund
     total_tax_calculated = calculate_total_tax(user.yearly_income, user.elterngeld, user.kindergeld,
                                                user.pension_tax, user.health_insurance_tax, user.car_insurance_tax,
                                                user.tax_class)
-    overall_paid_tax = get_positive_float_input(f"Enter the overall tax you paid in this year: \n")  # User input for overall paid tax
+    overall_paid_tax = get_positive_float_input("Enter the overall tax you paid in this year: \n")  # User input for overall paid tax
     
-    print("\nThe tax identification number , abbreviated tax ID, helps tax offices identify and manage taxpayers.")# User input for tax ID
-    tax_id = get_tax_id()
-    
-    refund = overall_paid_tax - total_tax_calculated
+    refund = float(overall_paid_tax) - float(total_tax_calculated)
 
     print("\nUser Details:")
     print(f"Name: {user.name}")
     print(f"Full Name: {user.full_name}")
-    print(f"Year: {user.year}")
     print(f"Tax Class: {user.tax_class}")
-    print(f"Tax ID: {user.tax_id}")
+    
     print("\nUser Entries:")
     print(f"Yearly Income: {user.yearly_income}")
     print(f"Elterngeld: {user.elterngeld}")
@@ -63,6 +58,8 @@ def update_google_sheet(user):
     print(f"Pension Tax: {user.pension_tax}")
     print(f"Health Insurance Tax: {user.health_insurance_tax}")
     print(f"Car Insurance Tax: {user.car_insurance_tax}")
+    print(f"Year: {user.year}")
+    print(f"Tax ID: {user.tax_id}")
     print("\nCalculated Refund:")
     print(f"Total Tax Calculated: {total_tax_calculated:.2f} Euros")
     print(f"Overall Paid Tax: {overall_paid_tax:.2f} Euros")
@@ -73,7 +70,7 @@ def get_personal_details():
     Get user input for personal details
     """
     while True:
-        name = input("Enter your name: \n")
+        name = input("\nEnter your name: \n")
         if not name.isalpha():
             print("Invalid input. Please enter a valid name with only alphabetic characters.")
             continue
@@ -98,7 +95,7 @@ def get_personal_details():
         tax_class = get_tax_class()
         income_details = get_income_details()  # Call the function to gather income details
 
-        return name, full_name, year, tax_class, *income_details  # Unpack income details
+        return name, full_name, tax_class, *income_details, year  # Unpack income details
 
 
 def get_tax_class():
@@ -135,7 +132,7 @@ def get_income_details():
         print("If you have children, enter total Elterngeld and Kindergeld.")
         print("\nElterngeld is a financial benefit provided by the German government to support parents during the time they take off work to care for their newborn or adopted child. ")
         print("Kindergeld is intended to support families in covering the basic needs of their children, such as food, clothing, and education.")
-        print("\nIf you do not get these, please enter 0 for each.)")
+        print("\nIf you do not get these, please enter 0 for each.")
         elterngeld = get_positive_float_input("Enter your Elterngeld: \n")
         kindergeld = get_positive_float_input("Enter your Kindergeld: \n")
         pension_tax = get_positive_float_input("Enter taxes for pension: \n")
@@ -147,8 +144,14 @@ def get_income_details():
         print("Invalid input. Please enter valid numbers.")
         return 0, 0, 0, 0, 0, 0  # Return default values in case of an error
 
-    return yearly_income, elterngeld, kindergeld, pension_tax, health_insurance_tax, car_insurance_tax
-
+    return (
+        float(yearly_income),
+        float(elterngeld),
+        float(kindergeld),
+        float(pension_tax),
+        float(health_insurance_tax),
+        float(car_insurance_tax)
+    )
 def get_positive_float_input(prompt):
     """
     Check input if it is positive and numeric
@@ -197,7 +200,7 @@ def calculate_income_tax(yearly_income, elterngeld, kindergeld, pension_tax, hea
     # Calculate total income considering Elterngeld and Kindergeld
     total_income = yearly_income + elterngeld + kindergeld
     # specific taxes like pension, health insurance, car insurance
-    total_income -= pension_tax + health_insurance_tax + car_insurance_tax
+    total_income -= float(pension_tax) + float(health_insurance_tax) + float(car_insurance_tax)
     tax_rate = tax_rates.get(tax_class, 0.1)
     tax = total_income * tax_rate
     return tax
@@ -221,9 +224,9 @@ def calculate_tax_refund(overall_paid_tax, tax_class, yearly_income, elterngeld,
     income_details = (yearly_income, elterngeld, kindergeld, pension_tax, health_insurance_tax, car_insurance_tax)
     total_tax_calculated = calculate_total_tax(*income_details, tax_class)  
     refund = overall_paid_tax - total_tax_calculated
-
-    print(f"Tax Class: {tax_class}")
+    print("\nCalulating Tax Refund...")
     print("\nUser Entries:")
+    print(f"Tax Class: {tax_class}")
     print(f"Yearly Income: {yearly_income}")
     print(f"Elterngeld: {elterngeld}")
     print(f"Kindergeld: {kindergeld}")
@@ -234,27 +237,29 @@ def calculate_tax_refund(overall_paid_tax, tax_class, yearly_income, elterngeld,
     print(f"Total Tax Calculated: {total_tax_calculated:.2f} Euros")
     print(f"Overall Paid Tax: {overall_paid_tax:.2f} Euros")
     print(f"Refund: {refund:.2f} Euros")
+    print("\nThank you for using Wunder eTax!")
 
 def get_tax_id():
     """
     Get user input for tax ID with validation
     """
+    print("\nThe tax identification number , abbreviated tax ID, helps tax offices identify and manage taxpayers.")# User input for tax ID
+    tax_id = input("Enter your tax ID: \n")
     while True:
-        tax_id = input("Enter your tax ID: \n")
-        if tax_id.isnumeric() and len(tax_id) == 11:  # Assuming a tax ID is a numeric value with a specific length
+        if tax_id.isnumeric() and int(tax_id) > 0 and len(tax_id) == 11:  # Assuming a tax ID is a numeric value with a specific length
             return tax_id
         else:
-            print("Invalid tax ID. Please enter a numeric tax ID with a length of 11 digits.")
+            print("Invalid tax ID. Please enter a numeric positive tax ID with a length of 11 digits.")
 
 def main():
     print("Welcome to the Wunder eTax Return ")
-    print("Answer our easy-to-understand question-answer process, or have your tax done by an independent tax advisor")
-    print("We are willing to assist you in estimating potential tax refunds quickly and accurately avoiding complicated tax jargon")
+    print("Answer our easy-to-understand question-answer process, or have your tax done by an independent tax advisor.")
+    print("We are willing to assist you in estimating potential tax refunds quickly and accurately avoiding complicated tax jargon.")
     print("Your data is always transmitted in encrypted form to our servers and via ELSTER to the tax office.")
 
     print("\nChoose an option:")
-    print("1. Calculate Tax Refund")
-    print("2. Get Help from an independent tax advisor, who will prepare and submit your tax return for you")
+    print("1. Calculate Tax Refund.")
+    print("2. Get Help from an independent tax advisor, who will prepare and submit your tax return to tax office for you.")
 
     choice = input("\nEnter your choice (1 or 2): ")
     if choice == "1":
@@ -265,7 +270,7 @@ def main():
                              pension_tax, health_insurance_tax, car_insurance_tax)
     elif choice == "2":
         user = get_personal_details()
-        update_google_sheet(User(*user))  # send data to google sheets for admin
+        update_google_sheet(User(*user, get_tax_id()))   # send data to google sheets for admin
         print("\nYour data is successfully sent to our server!")
         
     else:
