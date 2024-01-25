@@ -1,5 +1,7 @@
 Wunder eTax is a tax refund calculator app serves as a convenient and secure solution for individuals seeking a hassle-free way to estimate their tax refunds without the burden of intricate tax language. The combination of user-friendly design, straightforward questions, and robust security measures ensures that users can confidently and easily navigate the tax estimation process.
 
+[View live website here](https://tax-refund-calculator-6ba07d15fa62.herokuapp.com/)
+
 # Table of Content
 
 * [**Project**](<#project>)
@@ -30,6 +32,27 @@ Wunder eTax is a tax refund calculator app serves as a convenient and secure sol
 * [Credits](<#credits>)
 * [Acknowledgements](<#acknowledgements>)
 
+# **Project**
+
+## Site Users Goal
+
+## Site Owners Goal
+
+[Back to top](<#table-of-content>)
+
+# **User Experience (UX)**
+
+For this project I didn't make a wireframe in [Balsamiq](https://balsamiq.com/) as in the earlier projects. The reason is the 'Wunder eTax' application will have a command line interface which means that there will not be room for that many creative design choices. Instead I decided to create a logic [Flow Chart](<#flow-chart>) to get a broad understanding of the application flow.
+
+## Flow chart
+The flow chart for this application was made with the online service [Lucid App](https://lucid.app/). I tried to keep in on a quite general level but with enough details to get a good understanding of how everything in the application is connected. The flow chart made it more easy when going into the coding phase.
+
+<details><summary><b>Flow Chart</b></summary>
+
+![Flow Chart]()
+</details><br/>
+
+[Back to top](<#table-of-content>)
 
 # Technologies Used
 
