@@ -54,6 +54,29 @@ The flow chart for this application was made with the online service [Lucid App]
 
 [Back to top](<#table-of-content>)
 
+## Site Structure
+
+The 'Wunder eTax' is a terminal based application that is being presented in a one page website. When the application starts the user will be presented with a short welcome message and a menu with 2 options. The menu consists of the following choices: *Calculate Tax Refund*, *Get Help from an independent tax advisor*. Read more about the choices in the [Features](<#features>) section.
+
+In the top of the page there is also a 'Run Program' button that the user can use to reload the application if needed.
+
+## Data Model
+To store all data in the application I made a choice to use [Google Sheets](https://www.google.co.uk/sheets/about/). All data in the application provided by the user is being sent and retrieved from the Google Sheet.
+
+* Name of workbook: *tax-calculator*
+* Name of worksheet: *sheet*
+
+<details><summary><b>Google Sheet</b></summary>
+
+![Google Sheet]()
+</details><br/>
+
+The worksheet holds 11 columns with information such as: *name*, *full name*, *tax class*, *yearly income*, *kindergeld(Childcare benefits)*, *elterngeld(parental benefits)*, *pension tax*, *health insurace tax*, *car insurace tax* that is being controlled from the application via Python.
+
+[Back to top](<#table-of-content>)
+
+
+
 # Technologies Used
 
 ## Languages
