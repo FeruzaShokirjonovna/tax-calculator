@@ -95,7 +95,55 @@ The Main Menu is quite straight forward and consists of 2 choices. See each choi
 
 <details><summary><b>Main Menu</b></summary>
 
-![Main Menu]()
+![Main Menu](assets/images/welcome_message.png)
+</details><br/>
+
+### Calculate Tax Refund (Option 1)
+Users can choose the option to calculate their tax refund independently. The process involves providing information about income and taxes paid. The calculator considers various factors such as yearly income, Elterngeld, Kindergeld, pension tax, health insurance tax, and car insurance tax to estimate the potential tax refund. Users are prompted with easy-to-understand questions to gather the necessary details.
+
+<details><summary><b>Yearly Tax input</b></summary>
+
+![Yearly Tax input](assets/images/yearly_tax_input.png)
+</details><br/>
+
+<details><summary><b>Tax Class input</b></summary>
+
+Before asking to enter tax class, users are informed the 6 types of tax classes and noticed the importance of selecting the tax class as it may affect the overall tax liability.
+
+![Tax Class input](assets/images/tax_class_input.png)
+</details><br/>
+<details><summary><b>Invalid tax class message</b></summary>
+
+![Invalid tax class message](assets/images/invalid_tax_class_alert_message.png)
+</details><br/>
+
+<details><summary><b>Yearly Income input</b></summary>
+
+![Yearly Income input](assets/images/yearly_income_input.png)
+</details><br/>
+
+<details><summary><b>Elterngeld(parental financial benefits) and Kindergeld(childcare financial benefits) input</b></summary>
+
+Before the user is asked to input, the app gives detailed information.
+
+![Elterngeld(parental financial benefits) and Kindergeld(childcare financial benefits) input](assets/images/parental_and_childcare_financial_benefits_input.png)
+</details><br/>
+
+<details><summary><b>Tax for pension input</b></summary>
+
+![Tax for pension input](assets/images/pension_tax_input.png)
+</details><br/>
+<details><summary><b>Tax for health insurance input</b></summary>
+
+![Tax for health insurance input](assets/images/health_insurance_input.png)
+</details><br/>
+<details><summary><b>Tax for car insurance input</b></summary>
+
+![Tax for car insurance input](assets/images/car_insurance_input.png)
+</details><br/>
+<details><summary><b>Tax return calculation display</b></summary>
+
+![Tax return calculation display](assets/images/tax_return_calculation_display.png)
 </details><br/>
 
 
