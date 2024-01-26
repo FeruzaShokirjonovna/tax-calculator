@@ -75,6 +75,28 @@ The worksheet holds 11 columns with information such as: *name*, *full name*, *t
 
 [Back to top](<#table-of-content>)
 
+## Design Choices
+
+* ### Color Scheme
+'Wunder eTax' is a terminal based application which means that there aren't that many visual design choices. I have used black and white colors.
+
+ ### Typography
+No specific typography is being used in the application. The font is just the standard font that is being used in the terminal.
+
+[Back to top](<#table-of-content>)
+
+# **Features**
+When the application starts it calls the *main function* which   *prints the welcome message*. As stated in the [Site Structure](<#site-structure>) area the application consists of 2 different areas (functions) : *Calculate Tax Refund*, *Get Help from an independent tax advisor*. The features are being explained more in detail in the [Existing Features](<#existing-features>) area below.
+
+## **Existing Features**
+
+### Main Menu
+The Main Menu is quite straight forward and consists of 2 choices. See each choice being explained below.
+
+<details><summary><b>Main Menu</b></summary>
+
+![Main Menu]()
+</details><br/>
 
 
 # Technologies Used
