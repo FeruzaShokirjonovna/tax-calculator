@@ -272,3 +272,47 @@ Microsoft Edge (Version 120.0.2210.144)
 </details><br/>
 
 [Back to top](<#table-of-content>)
+
+# Deployment
+
+## Deployment To Heroku
+
+he project was deployed to [Heroku](https://www.heroku.com). To deploy, please follow the process below:
+
+To deploy Your App to Heroku, you have to :
+- Create a Heroku account.
+- From the dashboard select create new app.
+- Enter a name for your app, it needs to be unique, and select your region then press create app.
+- Select settings at the top of your app page.
+- Press reveal config vars.
+- If the user is using google sheets in their project, you'll have to name your credentials file in the key input and copy and paste that credential file in the value input.
+- Also add PORT in key input and 8000 as value input.
+- Scroll down and press the add buildpack button.
+- From here press the Python icon and then the add buildpack button.
+- Add another builpack and press the Nodejs icon this time and then press add buildpack button again.
+- Scroll back up and select Deploy at the top of your app page.
+- Choose your deployment method, when choosing Github, you will have to connect to your account.
+- Then choose which repo you want to deploy and connect to it.
+- Choose if you want to deploy automatic or manual, and press deploy.
+
+## Github deployment
+
+To fork this repository on Github, you have to :
+  - Go to my [GitHub repository](https://github.com/FeruzaShokirjonovna/tax-calculator).
+  - In the top-right corner of the page, click Fork.
+  - Under "Owner," select the dropdown menu and click an owner for the forked repository.
+  - By default, forks are named the same as their upstream repositories. Optionally, to further distinguish your fork, in the "Repository name" field, type a name.
+  - Click Create fork.
+
+To clone this repository, you have to :
+  - Go to my [GitHub repository](https://github.com/FeruzaShokirjonovna/tax-calculator).
+  - Above the list of files, click  Code.
+  - Copy the URL for the repository.
+  - Open Git Bash.
+  - Change the current working directory to the location where you want the cloned directory.
+  - Type git clone, and then paste the URL you copied earlier.
+  - Press Enter to create your local clone.
+
+You can see deployed game [here](https://tax-refund-calculator-6ba07d15fa62.herokuapp.com/).
+
+<br>
