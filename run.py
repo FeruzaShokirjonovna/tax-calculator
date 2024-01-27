@@ -275,6 +275,6 @@ def main():
         
     else:
         print("Invalid choice. Please enter 1 or 2.")
-
+        choice = input("\nEnter your choice (1 or 2): ")
 if __name__ == "__main__":
     main()

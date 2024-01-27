@@ -146,6 +146,43 @@ Before the user is asked to input, the app gives detailed information.
 ![Tax return calculation display](assets/images/tax_return_calculation_display.png)
 </details><br/>
 
+### Input Validation
+The application incorporates input validation to ensure that users enter accurate and valid information. Validation is implemented for various user inputs, including:
+
+<details><summary><b>Invalid menu choice</b></summary>
+Alerts to provide the specific data as 1 or 2.
+
+![Invalid menu choice](assets/images/invalid_menu_input.png)
+</details><br/>
+
+<details><summary><b>Invalid year input</b></summary>
+Validates that the entered year is between 2020 and 2023.
+
+![Invalid year input](assets/images/invalid_year_input.pn)
+</details><br/>
+
+<details><summary><b>Invalid tax class</b></summary>
+Ensures that the tax class entered is between 1 and 6.
+
+![Invalid tax class](assets/images/invalid_tax_class_alert_message.png)
+</details><br/>
+
+<details><summary><b>Invalid positive float input</b></summary>
+Checks that numeric inputs, such as income and taxes, are positive float values.
+
+![Invalid positive float input](assets/images/positive_float_input.png)
+</details><br/>
+
+<details><summary><b>Invalid ID input</b></summary>
+
+![]()
+</details><br/>
+
+<details><summary><b></b></summary>
+
+![]()
+</details><br/>
+
 
 # Technologies Used
 
