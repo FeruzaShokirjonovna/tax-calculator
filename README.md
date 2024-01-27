@@ -236,6 +236,39 @@ No errors were returned when passing through the PEP Validator.
 
 [Back to top](<#table-of-content>)
 
+## Additional Testing
+
+### Responsiveness Test
+This project does not require a fully responsive design but I made some basic tests and could quite fast state that the application in general is not supported by phones and tablets. 
 
 [Back to top](<#table-of-content>)
+
+### Browser Compatibility
+'Wunder eTax' was tested for functionality and appearance in the following browsers on desktop. No visible or funcional issues on all browsers.
+
+Google Chrome (Version 120.0.6099.227)
+Opera One(version: 106.0.4998.52)
+Microsoft Edge (Version 120.0.2210.144)
+
+[Back to top](<#table-of-content>)
+
+### Lighthouse
+[Google Lighthouse](https://developers.google.com/web/tools/lighthouse) in Chrome Developer Tools was used to test the application within the areas of *Performance*, *Accessibility*, *Best Practices* and *SEO*.  I have not that many comments on these results because the opportunities are connected mostly to the JavaScripts being used (which I have not altered).
+
+<details><summary><b>Lighthouse Result Result</b></summary>
+
+![Lighthouse Form Confirmation Page Result](assets/images/lighthouse.png)
+</details><br/>
+
+[Back to top](<#table-of-content>)
+
+### WAVE
+
+[WAVE](https://wave.webaim.org/) was used to check accessibility. 1 error and 2 alerts were found. The error was connected to very low contrast on the 'run program' button (white text on red background) and the alerts were connected to 'no heading structure' and 'no page regions'. The error and alerts are not connected to my application why I will let it be for this project.
+
+<details><summary><b>WAVE Result</b></summary>
+
+![WAVE Result](assets/images/wave_result.png)
+</details><br/>
+
 [Back to top](<#table-of-content>)
