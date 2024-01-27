@@ -37,15 +37,20 @@ Wunder eTax is a tax refund calculator app serves as a convenient and secure sol
 ## Project Idea
 In Germany, the income tax refund system is primarily based on the annual income tax return.The purpose of filing an income tax return is to determine the amount of tax owed to the government or, in some cases, to claim a refund if the taxpayer has overpaid taxes.It's important for individuals in Germany to keep accurate records of their income, expenses, and other relevant financial information to ensure a smooth tax return process. Additionally, changes in personal circumstances (e.g., marriage, childbirth) may impact the amount of tax payable or refundable.
 ELSTER is a German electronic tax filing system that allows taxpayers to submit their tax returns online. However, the perception of ELSTER being not user-friendly can vary based on individual experiences and opinions. Here are a few reasons some users might find ELSTER less user-friendly:
--ELSTER requires users to have a good understanding of German tax laws and regulations to complete the process accurately.
--For non-German speakers, the use of German language throughout the platform may pose a barrier.
--Users encounter technical challenges, such as difficulties in accessing the system, slow loading times, or compatibility issues with certain browsers or devices.
+* ELSTER requires users to have a good understanding of German tax laws and regulations to complete the process accurately.
+* For non-German speakers, the use of German language throughout the platform may pose a barrier.
+* Users encounter technical challenges, such as difficulties in accessing the system, slow loading times, or compatibility issues with certain browsers or devices.
 
-And some these kind of reasons I tried to make an app with a focus on simplicity, the app employs an easy-to-understand question-answer process to collect relevant financial information necessary for tax calculations. Of course "Wunder eTax" is a basic application only estimates tax refunds for individuals.  In the future I would improve it as a real-world project aimed at providing users with a comprehensive platform to calculate taxes and customize it for businesses, and other entities filing a comprehensive document with the tax authorities to report their income and determine the amount of income tax owed or eligible for a refund.
+And some these kind of reasons I tried to make an app with a focus on simplicity, the app employs an easy-to-understand question-answer process to collect relevant financial information necessary for tax calculations. Of course, "Wunder eTax" is a basic application only estimates tax refunds for individuals.  In the future I would improve it as a real-world project aimed at providing users with a comprehensive platform to calculate taxes and customize it for businesses, and other entities filing a comprehensive document with the tax authorities to report their income and determine the amount of income tax owed or eligible for a refund.
 
 ## Site Users Goal
+* Users should be able to calculate their tax refund easily and accurately using the Wunder eTax Return platform.
+* Users expect their personal and financial information to be transmitted securely to the Wunder eTax servers and, subsequently, to the tax office via ELSTER.
+* Users should have the flexibility to choose between self-service tax refund calculations or opt for assistance from independent tax advisors.
 
 ## Site Owners Goal
+* Attract a large user base by providing a user-friendly and efficient tax calculation platform, building trust in the accuracy of the calculations.
+* Implement effective marketing strategies to increase awareness of the Wunder eTax Return platform and establish a reputable brand in the tax calculation domain.
 
 [Back to top](<#table-of-content>)
 
@@ -86,7 +91,7 @@ The worksheet holds 11 columns with information such as: *name*, *full name*, *t
 
 ## Design Choices
 
-* ### Color Scheme
+ ### Color Scheme
 'Wunder eTax' is a terminal based application which means that there aren't that many visual design choices. I have used black and white colors.
 
  ### Typography

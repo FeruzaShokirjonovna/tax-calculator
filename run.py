@@ -151,7 +151,6 @@ def get_income_details():
         yearly_income = get_positive_float_input(
             "Enter your yearly income: \n")
         print("If you have children, enter total Elterngeld and Kindergeld.")
-        # This line is already under the character limit
         elterngeld = get_positive_float_input("Enter your Elterngeld: \n")
         kindergeld = get_positive_float_input("Enter your Kindergeld: \n")
         pension_tax = get_positive_float_input("Enter taxes for pension: \n")
