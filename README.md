@@ -206,6 +206,36 @@ Checks that numeric inputs, such as income and taxes, are positive float values.
 ## Code Validation
 The Wunder eTax application has been tested through [W3C Markup Validaton Service](https://validator.w3.org/), [W3C CSS Validaton Service](https://jigsaw.w3.org/css-validator/) and [PEP Online Validator](http://pep8online.com/). Errors were found by the PEP Online Validator but could easily be fixed (see [bugs section](#known-bugs)).
 
+### Markup Validation
+No errors were returned when passing through the official W3C validator.
+
+<details><summary><b>HTML Validation Result</b></summary>
+
+![HTML Result Home Page](assets/images/html_validation.png)
+</details><br/>
+
+[Back to top](<#table-of-content>)
+
+### CSS Validaton
+No errors were returned when passing through the official W3C validator.
+
+<details><summary><b>CSS Validation Result</b></summary>
+
+![CSS Result](assets/images/css_validation.png)
+</details><br/>
+
+[Back to top](<#table-of-content>)
+
+### PEP Validation
+No errors were returned when passing through the PEP Validator.
+
+<details><summary><b>PEP Validation Result</b></summary>
+
+![PEP Validation](assets/images/pep_validation.png)
+</details><br/>
+
+[Back to top](<#table-of-content>)
+
 
 [Back to top](<#table-of-content>)
 [Back to top](<#table-of-content>)
