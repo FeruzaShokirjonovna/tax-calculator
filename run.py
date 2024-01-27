@@ -17,7 +17,7 @@ class User:
     def __init__(self, name, full_name, tax_class,
                  yearly_income, elterngeld, kindergeld,
                  pension_tax, health_insurance_tax,
-                 car_insurance_tax, tax_id, year):
+                 car_insurance_tax, year, tax_id):
         self.name = name
         self.full_name = full_name
         self.tax_class = tax_class
@@ -27,8 +27,8 @@ class User:
         self.pension_tax = pension_tax
         self.health_insurance_tax = health_insurance_tax
         self.car_insurance_tax = car_insurance_tax
-        self.tax_id = tax_id
         self.year = year
+        self.tax_id = tax_id
 
 
 def update_google_sheet(user):
@@ -313,10 +313,12 @@ def main():
                              yearly_income, elterngeld,
                              kindergeld, pension_tax,
                              health_insurance_tax, car_insurance_tax)
-    elif choice == "2":
-        user = get_personal_details()
+    if choice == "2":
+        user_details = get_personal_details()
+        tax_id = get_tax_id()
+        user = User(*user_details, tax_id)
         # send data to google sheets for admin
-        update_google_sheet(User(*user, get_tax_id()))
+        update_google_sheet(user)
         print("\nYour data is successfully sent to our server!")
     else:
         print("Invalid choice. Please enter 1 or 2.")
