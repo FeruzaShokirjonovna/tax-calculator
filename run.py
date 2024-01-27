@@ -283,16 +283,21 @@ def get_tax_id():
     """
     print("\nThe tax identification number , abbreviated tax ID.")
     print("It helps tax offices identify and manage taxpayers.")
-    # User input for tax ID
-    tax_id = input("Enter your tax ID: \n")
-    while True:
-        # Assuming a tax ID is a numeric value with a specific length
-        if tax_id.isnumeric() and int(tax_id) > 0 and len(tax_id) == 11:
-            return tax_id
-        else:
-            print("Invalid tax ID.")
-            print("Please enter a numeric positive tax ID with 11 digits.")
 
+    while True:
+        try:
+            # User input for tax ID
+            tax_id = int(input("Enter your tax ID: \n"))
+
+            # Assuming a tax ID is a numeric value with a specific length
+            if tax_id.isnumeric() and int(tax_id) > 0 and len(tax_id) == 11:
+                return tax_id
+            else:
+                print("Invalid tax ID.")
+                print("Please enter a numeric positive tax ID with 11 digits.")
+        except ValueError:
+            print("Invalid input. Please enter a valid numeric value.")
+    
 
 def main():
     print("Welcome to the Wunder eTax Return ")

@@ -82,7 +82,7 @@ To store all data in the application I made a choice to use [Google Sheets](http
 
 <details><summary><b>Google Sheet</b></summary>
 
-![Google Sheet]()
+![Google Sheet](assets/images/google_sheets.png)
 </details><br/>
 
 The worksheet holds 11 columns with information such as: *name*, *full name*, *tax class*, *yearly income*, *kindergeld(Childcare benefits)*, *elterngeld(parental benefits)*, *pension tax*, *health insurace tax*, *car insurace tax* that is being controlled from the application via Python.
@@ -347,6 +347,16 @@ Microsoft Edge (Version 120.0.2210.144)
 </details><br/>
 
 [Back to top](<#table-of-content>)
+
+## Bugs
+
+### Fixed bugs
+
+* Bug: During the mid project session with my mentor Precious he found a bug in taxes input. The bug made it possible for the user to input negative values.This generated a problem when calculating tax return. The bug was fixed by changing the function and add a validation to check positive float input.
+
+* Bug: On Tax refund calculation display for option 2 where are user entries displayed, the year and and tax Id values were misplaced. This fixed by replacing order of the year and tax ID in user class. 
+
+### Unfixed Bugs
 
 # Deployment
 
