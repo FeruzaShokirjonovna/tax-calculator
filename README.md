@@ -126,10 +126,6 @@ Before asking to enter tax class, users are informed the 6 types of tax classes 
 
 ![Tax Class input](assets/images/tax_class_input.png)
 </details><br/>
-<details><summary><b>Invalid tax class message</b></summary>
-
-![Invalid tax class message](assets/images/invalid_tax_class_alert_message.png)
-</details><br/>
 
 <details><summary><b>Yearly Income input</b></summary>
 
@@ -159,6 +155,71 @@ Before the user is asked to input, the app gives detailed information.
 
 ![Tax return calculation display](assets/images/tax_return_calculation_display.png)
 </details><br/>
+
+### Get Help from an Independent Tax Advisor (Option 2)
+For users who prefer assistance, the app offers the option to get help from an independent tax advisor. This involves providing personal details along with income and tax-related information. The collected data is then sent to Google Sheets for further processing by the tax advisor.
+
+<details><summary><b>Name input</b></summary>
+
+![Name input](assets/images/name_input.png)
+</details><br/>
+
+<details><summary><b>Full name input</b></summary>
+
+![Full name input](assets/images/full_name_input.png)
+</details><br/>
+
+<details><summary><b>Year input</b></summary>
+
+![Year input](assets/images/year_input.png)
+</details><br/>
+
+<details><summary><b>Tax Class input</b></summary>
+
+Before asking to enter tax class, users are informed the 6 types of tax classes and noticed the importance of selecting the tax class as it may affect the overall tax liability.
+
+![Tax Class input](assets/images/tax_class_input.png)
+</details><br/>
+
+<details><summary><b>Yearly Income input</b></summary>
+
+![Yearly Income input](assets/images/yearly_income_input_option2.png)
+</details><br/>
+
+<details><summary><b>Elterngeld(parental financial benefits) and Kindergeld(childcare financial benefits) input</b></summary>
+
+Before the user is asked to input, the app gives detailed information.
+
+![Elterngeld(parental financial benefits) and Kindergeld(childcare financial benefits) input](assets/images/parental_and_childcare_financial_benefits_input.png)
+</details><br/>
+
+<details><summary><b>Tax for pension input</b></summary>
+
+![Tax for pension input](assets/images/pension_input_option2.png)
+</details><br/>
+<details><summary><b>Tax for health insurance input</b></summary>
+
+![Tax for health insurance input](assets/images/tax_for_health_insurance_option2.png)
+</details><br/>
+<details><summary><b>Tax for car insurance input</b></summary>
+
+![Tax for car insurance input](assets/images/tax_for_car_insurance_option2.png)
+</details><br/>
+<details><summary><b>Overall paid tax input</b></summary>
+
+![Overall paid tax input](assets/images/overall_paid_tax_input.png)
+</details><br/>
+
+<details><summary><b>Tax ID input</b></summary>
+
+![Tax ID input](assets/images/tax_id_input.png)
+</details><br/>
+
+<details><summary><b>Tax return calculation display</b></summary>
+
+![Tax return calculation display](assets/images/tax_return_calculation_display_option2.png)
+</details><br/>
+
 
 ### Input Validation
 The application incorporates input validation to ensure that users enter accurate and valid information. Validation is implemented for various user inputs, including:
