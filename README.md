@@ -5,8 +5,8 @@ Wunder eTax is a tax refund calculator app serves as a convenient and secure sol
 # Table of Content
 
 * [**Project**](<#project>)
+    * [Project Idea](<#project-idea>)
     * [Site Users Goal](<#site-users-goal>)
-    * [User Stories](<#user-stories>)
     * [Site Owners Goal](<#site-owners-goal>)
 
 * [**User Experience (UX)**](<#user-experience-ux>)
@@ -33,6 +33,15 @@ Wunder eTax is a tax refund calculator app serves as a convenient and secure sol
 * [Acknowledgements](<#acknowledgements>)
 
 # **Project**
+
+## Project Idea
+In Germany, the income tax refund system is primarily based on the annual income tax return.The purpose of filing an income tax return is to determine the amount of tax owed to the government or, in some cases, to claim a refund if the taxpayer has overpaid taxes.It's important for individuals in Germany to keep accurate records of their income, expenses, and other relevant financial information to ensure a smooth tax return process. Additionally, changes in personal circumstances (e.g., marriage, childbirth) may impact the amount of tax payable or refundable.
+ELSTER is a German electronic tax filing system that allows taxpayers to submit their tax returns online. However, the perception of ELSTER being not user-friendly can vary based on individual experiences and opinions. Here are a few reasons some users might find ELSTER less user-friendly:
+-ELSTER requires users to have a good understanding of German tax laws and regulations to complete the process accurately.
+-For non-German speakers, the use of German language throughout the platform may pose a barrier.
+-Users encounter technical challenges, such as difficulties in accessing the system, slow loading times, or compatibility issues with certain browsers or devices.
+
+And some these kind of reasons I tried to make an app with a focus on simplicity, the app employs an easy-to-understand question-answer process to collect relevant financial information necessary for tax calculations. Of course "Wunder eTax" is a basic application only estimates tax refunds for individuals.  In the future I would improve it as a real-world project aimed at providing users with a comprehensive platform to calculate taxes and customize it for businesses, and other entities filing a comprehensive document with the tax authorities to report their income and determine the amount of income tax owed or eligible for a refund.
 
 ## Site Users Goal
 
