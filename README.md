@@ -178,10 +178,6 @@ Checks that numeric inputs, such as income and taxes, are positive float values.
 ![]()
 </details><br/>
 
-<details><summary><b></b></summary>
-
-![]()
-</details><br/>
 
 
 # Technologies Used
@@ -204,5 +200,12 @@ Checks that numeric inputs, such as income and taxes, are positive float values.
 * [GSpread](https://pypi.org/project/gspread/) - A Python API for Google Sheets that makes it possible to transfer data between the application and the Google Sheet.
 
 [Back to top](<#table-of-content>)
+
+# Testing
+
+## Code Validation
+The Wunder eTax application has been tested through [W3C Markup Validaton Service](https://validator.w3.org/), [W3C CSS Validaton Service](https://jigsaw.w3.org/css-validator/) and [PEP Online Validator](http://pep8online.com/). Errors were found by the PEP Online Validator but could easily be fixed (see [bugs section](#known-bugs)).
+
+
 [Back to top](<#table-of-content>)
 [Back to top](<#table-of-content>)
