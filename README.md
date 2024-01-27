@@ -296,8 +296,8 @@ To deploy Your App to Heroku, you have to :
 - Choose if you want to deploy automatic or manual, and press deploy.
 
 ## Github deployment
+It is possible to do a copy of a GitHub Repository by forking the GitHub account. The copy can then be viewed and it is also possible to do changes in the copy without affecting the original repository. To fork this repository on Github, you have to :
 
-To fork this repository on Github, you have to :
   - Go to my [GitHub repository](https://github.com/FeruzaShokirjonovna/tax-calculator).
   - In the top-right corner of the page, click Fork.
   - Under "Owner," select the dropdown menu and click an owner for the forked repository.
@@ -315,4 +315,25 @@ To clone this repository, you have to :
 
 You can see deployed game [here](https://tax-refund-calculator-6ba07d15fa62.herokuapp.com/).
 
-<br>
+[Back to top](<#table-of-content>)
+
+# Credits
+
+## Content
+
+* All text content written by Orifjonova Feruza.
+* Income tax return system online for individuals [Ministry of Finance] (https://www.bzst.de/EN/Businesses/Capital_Yield_Tax_Relief/electronic_filing_procedure/electronic_filing_procedure_node.html)
+* Template for read.me provided by Code Institute (*with some additional changes that my mentor [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/))* suggested.
+
+## Technical
+
+* The project is highly inspired by [Love Sandwiches Walkthrough project](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode).
+
+* Inspiration on positive input validation for types of income and taxes was taken from [Stack Overflow](https://stackoverflow.com/questions/51086375/python-input-validation-positive-float-or-int-accepted)
+
+* Inspiration taken from [Computing Learner](https://computinglearner.com/how-to-create-a-menu-for-a-python-console-application/) to create a menu in a console application.
+
+# Acknowledgements
+The application 'Wunder eTax' was completed as the Portfolio Project #3 (*Python*) for the Full Stack Software Development Diploma at the [Code Institute](https://codeinstitute.net/). I would like to thank my mentor [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/) for relevant feedback during the project.
+
+*Orifjonova Feruza Shokirjonovna, 2024*
