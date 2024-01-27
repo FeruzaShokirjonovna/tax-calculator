@@ -151,7 +151,13 @@ def get_income_details():
         yearly_income = get_positive_float_input(
             "Enter your yearly income: \n")
         print("If you have children, enter total Elterngeld and Kindergeld.")
-        elterngeld = get_positive_float_input("Enter your Elterngeld: \n")
+        print("\nElterngeld is a financial benefit provided by the German government")
+        print("to support parents during the time they take off work")
+        print("to care for their newborn or adopted child.")
+        print("\nKindergeld is intended to support families in covering")
+        print("the basic needs of their children, such as food, clothing,")
+        print("and education.")
+        elterngeld = get_positive_float_input("\nEnter your Elterngeld: \n")
         kindergeld = get_positive_float_input("Enter your Kindergeld: \n")
         pension_tax = get_positive_float_input("Enter taxes for pension: \n")
         health_insurance_tax = get_positive_float_input(
