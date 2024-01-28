@@ -2,6 +2,8 @@ Wunder eTax is a tax refund calculator app serves as a convenient and secure sol
 
 [View live website here](https://tax-refund-calculator-6ba07d15fa62.herokuapp.com/)
 
+![Responsive design](assets/images/am_i_responsive.png)
+
 # Table of Content
 
 * [**Project**](<#project>)
@@ -70,7 +72,7 @@ The flow chart for this application was made with the online service [Lucid App]
 
 ## Site Structure
 
-The 'Wunder eTax' is a terminal based application that is being presented in a one page website. When the application starts the user will be presented with a short welcome message and a menu with 2 options. The menu consists of the following choices: *Calculate Tax Refund*, *Get Help from an independent tax advisor*. Read more about the choices in the [Features](<#features>) section.
+The 'Wunder eTax' is a terminal based application that is being presented in a one page website. When the application starts the user will be presented with a short welcome message and a menu with 3 options. The menu consists of the following choices: *Calculate Tax Refund*, *Get Help from an independent tax advisor* and *Exit*. Read more about the choices in the [Features](<#features>) section.
 
 In the top of the page there is also a 'Run Program' button that the user can use to reload the application if needed.
 
@@ -85,14 +87,14 @@ To store all data in the application I made a choice to use [Google Sheets](http
 ![Google Sheet](assets/images/google_sheets.png)
 </details><br/>
 
-The worksheet holds 11 columns with information such as: *name*, *full name*, *tax class*, *yearly income*, *kindergeld(Childcare benefits)*, *elterngeld(parental benefits)*, *pension tax*, *health insurace tax*, *car insurace tax* that is being controlled from the application via Python.
+The worksheet holds 11 columns with information such as: *name*, *full name*, *tax class*, *yearly income*, *kindergeld(Childcare benefits)*, *elterngeld(parental benefits)*, *pension tax*, *health insurace tax*, *car insurace tax*, *tax id* and *year* that is being controlled from the application via Python.
 
 [Back to top](<#table-of-content>)
 
 ## Design Choices
 
  ### Color Scheme
-'Wunder eTax' is a terminal based application which means that there aren't that many visual design choices. I have used black and white colors.
+'Wunder eTax' is a terminal based application which means that there aren't that many visual design choices. I have used black and white colors to keep it simple and easy to read.
 
  ### Typography
 No specific typography is being used in the application. The font is just the standard font that is being used in the terminal.
@@ -100,7 +102,7 @@ No specific typography is being used in the application. The font is just the st
 [Back to top](<#table-of-content>)
 
 # **Features**
-When the application starts it calls the *main function* which   *prints the welcome message*. As stated in the [Site Structure](<#site-structure>) area the application consists of 2 different areas (functions) : *Calculate Tax Refund*, *Get Help from an independent tax advisor*. The features are being explained more in detail in the [Existing Features](<#existing-features>) area below.
+When the application starts it calls the *main function* which   *prints the welcome message*. As stated in the [Site Structure](<#site-structure>) area the application consists of 3 different areas (functions) : *Calculate Tax Refund*, *Get Help from an independent tax advisor* and *Exit*. The features are being explained more in detail in the [Existing Features](<#existing-features>) area below.
 
 ## **Existing Features**
 
@@ -203,11 +205,11 @@ Before the user is asked to input, the app gives detailed information.
 </details><br/>
 <details><summary><b>Tax for car insurance input</b></summary>
 
-![Tax for car insurance input](assets/images/tax_for_car_insurance_option2.png)
+![Tax for car insurance input](assets/images/tax_for_car_insurance_input_option2.png)
 </details><br/>
 <details><summary><b>Overall paid tax input</b></summary>
 
-![Overall paid tax input](assets/images/overall_paid_tax_input.png)
+![Overall paid tax input](assets/images/overall_paid_tax_input_option2.png)
 </details><br/>
 
 <details><summary><b>Tax ID input</b></summary>
@@ -220,7 +222,7 @@ Before the user is asked to input, the app gives detailed information.
 ![Tax return calculation display](assets/images/tax_return_calculation_display_option2.png)
 </details><br/>
 
-### Exit option
+### Exit (Option 3)
 Exits the program.
 
 ### Input Validation
@@ -254,7 +256,6 @@ Checks that numeric inputs, such as income and taxes, are positive float values.
 
 ![Invalid tax ID input](assets/images/invalid_tax_id.png)
 </details><br/>
-
 
 
 # Technologies Used
@@ -351,7 +352,7 @@ This project does not require a fully responsive design but I made some basic te
 
 [Back to top](<#table-of-content>)
 
-## Bugs
+## Known Bugs
 
 ### Fixed bugs
 

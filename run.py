@@ -58,7 +58,7 @@ def update_google_sheet(user):
 
     # User input for overall paid tax
     overall_paid_tax = get_positive_float_input(
-        "Enter the overall tax you paid in this year: \n")
+        "\nEnter the overall tax you paid in this year: \n")
     refund = float(overall_paid_tax) - float(total_tax_calculated)
 
     print("\nUser Details:")
@@ -92,7 +92,7 @@ def get_personal_details():
             print("Please enter a valid name with only letters.")
             continue
 
-        full_name = input("Enter your full name: \n")
+        full_name = input("\nEnter your full name: \n")
         if not full_name.replace(" ", "").isalpha():
             print("Invalid input.")
             print("Please enter a valid full name with only letters.")
@@ -155,7 +155,7 @@ def get_income_details():
     """
     try:
         yearly_income = get_positive_float_input(
-            "Enter your yearly income: \n")
+            "\nEnter your yearly income: \n")
         print("If you have children, enter total Elterngeld and Kindergeld.")
         print("\nElterngeld is a financial benefit provided by the German government")
         print("to support parents during the time they take off work")
@@ -164,13 +164,13 @@ def get_income_details():
         print("the basic needs of their children, such as food, clothing,")
         print("and education.")
         elterngeld = get_positive_float_input("\nEnter your Elterngeld: \n")
-        kindergeld = get_positive_float_input("Enter your Kindergeld: \n")
-        pension_tax = get_positive_float_input("Enter taxes for pension: \n")
+        kindergeld = get_positive_float_input("\nEnter your Kindergeld: \n")
+        pension_tax = get_positive_float_input("\nEnter taxes for pension: \n")
         health_insurance_tax = get_positive_float_input(
-            "Enter taxes for health insurance: \n")
+            "\nEnter taxes for health insurance: \n")
         print("If you pay for car insurance, enter. If not enter 0.")
         car_insurance_tax = get_positive_float_input(
-            "Enter taxes for car insurance: \n")
+            "\nEnter taxes for car insurance: \n")
     except ValueError:
         print("Invalid input. Please enter valid numbers.")
         # Return default values in case of an error
@@ -293,7 +293,7 @@ def get_tax_id():
     while True:
         try:
             # User input for tax ID
-            tax_id = input("Enter your tax ID: \n")
+            tax_id = input("\nEnter your tax ID: \n")
 
             # Assuming a tax ID is a numeric value with a specific length
             if tax_id.isnumeric() and int(tax_id) > 0 and len(tax_id) == 11:
@@ -309,8 +309,7 @@ def display_menu():
     """
     Display menu
     """
-    print("\nChoose an option:")
-    print("1. Calculate Tax Refund.")
+    print("\n1. Calculate Tax Refund.")
     print("2. Get Help from an independent tax advisor.")
     print("3. Exit")
 
@@ -328,7 +327,7 @@ def main():
         display_menu()
         choice = input("\nEnter your choice (1, 2, or 3): ")
         if choice == "1":
-            overall_paid_tax = get_positive_float_input(f"Enter overall paid tax this year:\n")
+            overall_paid_tax = get_positive_float_input(f"\nEnter overall paid tax this year:\n")
             tax_class = get_tax_class()
             yearly_income, elterngeld, kindergeld, pension_tax,\
             health_insurance_tax, car_insurance_tax = get_income_details()
@@ -343,7 +342,7 @@ def main():
             print("\nYour data is successfully sent to our server!")
            
         elif choice == "3":
-            print("Exiting the program. ")
+            print("Exiting the program.")
             break
         else:
             print("Invalid choice. Please enter 1, 2, or 3.")
