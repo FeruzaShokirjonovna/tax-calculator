@@ -299,7 +299,7 @@ def get_tax_id():
             print("Invalid input. Please enter a valid numeric value.")
 
 
- def display_menu():
+def display_menu():
     """
     Display menu
     """
@@ -318,28 +318,29 @@ def main():
     print("refunds quickly and accurately avoiding complicated tax jargon.")
     print("Your data is always transmitted in encrypted form to our servers.")
     print("and via ELSTER to the tax office.")
-    
-    choice = input("\nEnter your choice (1 or 2): ")
-    if choice == "1":
-        print("Enter the tax you paid in this year.")
-        overall_paid_tax = get_positive_float_input(f"Enter here:\n")
-        tax_class = get_tax_class()
-        yearly_income, elterngeld, kindergeld, pension_tax,\
-        health_insurance_tax, car_insurance_tax = get_income_details()
-        calculate_tax_refund(overall_paid_tax, tax_class,
-                             yearly_income, elterngeld,
-                             kindergeld, pension_tax,
-                             health_insurance_tax, car_insurance_tax)
-    if choice == "2":
-        user_details = get_personal_details()
-        tax_id = get_tax_id()
-        user = User(*user_details, tax_id)
-        # send data to google sheets for admin
-        update_google_sheet(user)
-        print("\nYour data is successfully sent to our server!")
-    else:
-        print("Invalid choice. Please enter 1 or 2.")
-        choice = input("\nEnter your choice (1 or 2):")
+    while True:
+        display_menu()
+        choice = input("\nEnter your choice (1, 2, or 3): ")
+        if choice == "1":
+            overall_paid_tax = get_positive_float_input(f"Enter overall paid tax this year:\n")
+            tax_class = get_tax_class()
+            yearly_income, elterngeld, kindergeld, pension_tax,\
+            health_insurance_tax, car_insurance_tax = get_income_details()
+            calculate_tax_refund(overall_paid_tax, tax_class,
+                                yearly_income, elterngeld,
+                                kindergeld, pension_tax,
+                                health_insurance_tax, car_insurance_tax)
+           
+        elif choice == "2":
+            user = get_personal_details()
+            update_google_sheet(User(*user, get_tax_id()))
+            print("\nYour data is successfully sent to our server!")
+           
+        elif choice == "3":
+            print("Exiting the program. ")
+            break
+        else:
+            print("Invalid choice. Please enter 1, 2, or 3.")
 
 
 if __name__ == "__main__":
