@@ -235,7 +235,7 @@ Alerts to provide the specific data as 1 or 2.
 <details><summary><b>Invalid year input</b></summary>
 Validates that the entered year is between 2020 and 2023.
 
-![Invalid year input](assets/images/invalid_year_input.pn)
+![Invalid year input](assets/images/invalid_year_input.png)
 </details><br/>
 
 <details><summary><b>Invalid tax class</b></summary>
@@ -324,9 +324,9 @@ This project does not require a fully responsive design but I made some basic te
 ### Browser Compatibility
 'Wunder eTax' was tested for functionality and appearance in the following browsers on desktop. No visible or funcional issues on all browsers.
 
-Google Chrome (Version 120.0.6099.227)
-Opera One(version: 106.0.4998.52)
-Microsoft Edge (Version 120.0.2210.144)
+* Google Chrome (Version 120.0.6099.227)
+* Opera One(version: 106.0.4998.52)
+* Microsoft Edge (Version 120.0.2210.144)
 
 [Back to top](<#table-of-content>)
 
@@ -357,7 +357,7 @@ Microsoft Edge (Version 120.0.2210.144)
 
 * Bug: During the mid project session with my mentor Precious he found a bug in taxes input. The bug made it possible for the user to input negative values.This generated a problem when calculating tax return. The bug was fixed by changing the function and add a validation to check positive float input.
 
-* Bug: On Tax refund calculation display for option 2 where are user entries displayed, the year and and tax Id values were misplaced. This fixed by replacing order of the year and tax ID in user class. 
+* Bug: On Tax refund calculation display for the second option where the user entries displayed, the year and tax ID values were misplaced. This fixed by replacing the order of the year and the tax ID in the User class. 
 
 ### Unfixed Bugs
 
@@ -367,9 +367,9 @@ There is no unfixed bug left.
 
 ## Deployment To Heroku
 
-he project was deployed to [Heroku](https://www.heroku.com). To deploy, please follow the process below:
+The project was deployed to [Heroku](https://www.heroku.com).
 
-To deploy Your App to Heroku, you have to :
+To deploy the App to Heroku, you have to :
 - Create a Heroku account.
 - From the dashboard select create new app.
 - Enter a name for your app, it needs to be unique, and select your region then press create app.
@@ -411,8 +411,8 @@ You can see deployed game [here](https://tax-refund-calculator-6ba07d15fa62.hero
 
 ## Content
 
-* All text content written by Orifjonova Feruza.
-* Income tax return system online for individuals [Ministry of Finance] (https://www.bzst.de/EN/Businesses/Capital_Yield_Tax_Relief/electronic_filing_procedure/electronic_filing_procedure_node.html)
+* All text content is written by Orifjonova Feruza.
+* Income tax return system online for individuals researched from [Ministry of Finance](https://www.bzst.de/EN/Businesses/Capital_Yield_Tax_Relief/electronic_filing_procedure/electronic_filing_procedure_node.html)
 * Template for read.me provided by Code Institute (*with some additional changes that my mentor [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/))* suggested.
 
 ## Technical
