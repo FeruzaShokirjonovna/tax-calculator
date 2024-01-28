@@ -63,7 +63,7 @@ The flow chart for this application was made with the online service [Lucid App]
 
 <details><summary><b>Flow Chart</b></summary>
 
-![Flow Chart]()
+![Flow Chart](assets/images/flowchart.png)
 </details><br/>
 
 [Back to top](<#table-of-content>)
@@ -105,11 +105,11 @@ When the application starts it calls the *main function* which   *prints the wel
 ## **Existing Features**
 
 ### Main Menu
-The Main Menu is quite straight forward and consists of 2 choices. See each choice being explained below.
+The Main Menu is quite straight forward and consists of 3 choices. See each choice being explained below.
 
 <details><summary><b>Main Menu</b></summary>
 
-![Main Menu](assets/images/welcome_message.png)
+![Main Menu](assets/images/menu.png)
 </details><br/>
 
 ### Calculate Tax Refund (Option 1)
@@ -220,6 +220,8 @@ Before the user is asked to input, the app gives detailed information.
 ![Tax return calculation display](assets/images/tax_return_calculation_display_option2.png)
 </details><br/>
 
+### Exit option
+Exits the program.
 
 ### Input Validation
 The application incorporates input validation to ensure that users enter accurate and valid information. Validation is implemented for various user inputs, including:
@@ -248,9 +250,9 @@ Checks that numeric inputs, such as income and taxes, are positive float values.
 ![Invalid positive float input](assets/images/positive_float_input.png)
 </details><br/>
 
-<details><summary><b>Invalid ID input</b></summary>
+<details><summary><b>Invalid tax ID input</b></summary>
 
-![]()
+![Invalid tax ID input](assets/images/invalid_tax_id.png)
 </details><br/>
 
 
@@ -273,6 +275,7 @@ Checks that numeric inputs, such as income and taxes, are positive float values.
 
 ## Python Packages
 * [GSpread](https://pypi.org/project/gspread/) - A Python API for Google Sheets that makes it possible to transfer data between the application and the Google Sheet.
+* [google-auth](https://pypi.org/project/google-auth/) - A Python library, used for handling Google service account credentials.
 
 [Back to top](<#table-of-content>)
 

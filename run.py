@@ -33,7 +33,10 @@ class User:
 
 def update_google_sheet(user):
     """
-    Updates sheet adding details
+    Updates sheet adding details,
+    get user input for overall paid tax,
+    calculate and display refund
+    with own entries to the user
     """
     worksheet = SHEET.get_worksheet(0)
 
@@ -80,6 +83,7 @@ def update_google_sheet(user):
 def get_personal_details():
     """
     Get user input for personal details
+    Alert if input is invalid
     """
     while True:
         name = input("\nEnter your name: \n")
@@ -117,6 +121,8 @@ def get_personal_details():
 def get_tax_class():
     """
     Get user input, for which tax class the user is in
+    Give detailed definition
+    including 6 types of tax classes
     """
     while True:
         try:
