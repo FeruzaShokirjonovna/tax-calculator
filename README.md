@@ -362,7 +362,7 @@ This project does not require a fully responsive design but I made some basic te
 
 ### Unfixed Bugs
 
-There is no unfixed bug left.
+* Unfixed bug: When using the application on a mobile device, there is a bug in the "Personal Details" section, specifically during the input of the user's full name. Upon focusing on the input field, the system auto-populates the existing value and appends any new input. I have researched for many resources, could find that the users can manually delete the existing content before entering new information, but this is an inconvenience and not an intuitive solution. The bug needs to be fixed long term. For this project I will leave it as it is due to the upcoming deadline for the project.
 
 # Deployment
 
