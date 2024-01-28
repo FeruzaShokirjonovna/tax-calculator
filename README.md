@@ -358,6 +358,8 @@ Microsoft Edge (Version 120.0.2210.144)
 
 ### Unfixed Bugs
 
+There is no unfixed bug left.
+
 # Deployment
 
 ## Deployment To Heroku

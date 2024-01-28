@@ -283,11 +283,11 @@ def get_tax_id():
     """
     print("\nThe tax identification number , abbreviated tax ID.")
     print("It helps tax offices identify and manage taxpayers.")
-
+    print("It consists of 11 digits.")
     while True:
         try:
             # User input for tax ID
-            tax_id = int(input("Enter your tax ID: \n"))
+            tax_id = input("Enter your tax ID: \n")
 
             # Assuming a tax ID is a numeric value with a specific length
             if tax_id.isnumeric() and int(tax_id) > 0 and len(tax_id) == 11:
@@ -297,7 +297,17 @@ def get_tax_id():
                 print("Please enter a numeric positive tax ID with 11 digits.")
         except ValueError:
             print("Invalid input. Please enter a valid numeric value.")
-    
+
+
+ def display_menu():
+    """
+    Display menu
+    """
+    print("\nChoose an option:")
+    print("1. Calculate Tax Refund.")
+    print("2. Get Help from an independent tax advisor.")
+    print("3. Exit")
+
 
 def main():
     print("Welcome to the Wunder eTax Return ")
@@ -308,10 +318,7 @@ def main():
     print("refunds quickly and accurately avoiding complicated tax jargon.")
     print("Your data is always transmitted in encrypted form to our servers.")
     print("and via ELSTER to the tax office.")
-    print("\nChoose an option:")
-    print("1. Calculate Tax Refund.")
-    print("2. Get Help from an independent tax advisor.")
-
+    
     choice = input("\nEnter your choice (1 or 2): ")
     if choice == "1":
         print("Enter the tax you paid in this year.")
